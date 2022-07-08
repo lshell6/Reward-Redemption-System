@@ -1,4 +1,4 @@
-package com.main.model;
+package com.main;
 
 public class Item {
 	private String id;
