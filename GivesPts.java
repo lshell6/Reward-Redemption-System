@@ -23,12 +23,11 @@ public class GivePts {
 	}
 		
 		
-	public int calcPts(int curPts, int totalPts, int earnedPts) {
-		numOfPts = e.getCurrPts();
-		totPts = numOfPts + curPts + earnedPts;
-		totalPts = totPts;
-		return totPts;
-	}
+	public int calcPts(int earnedPts) {
+			numOfPts = e.getCurrPts();
+			totPts = numOfPts + earnedPts;
+			return totPts;
+		}
 		
 	public GivePts() {
 		String mID = m.getId();
