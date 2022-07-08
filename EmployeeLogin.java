@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class EmployeeLogin {
 	
-	EmployeeLogin(){
+	public void ShowMenuAndProcess(){
 		DB db = new DB();
 		Employee employee = new Employee(); 
 		
