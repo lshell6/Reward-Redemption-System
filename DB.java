@@ -97,4 +97,27 @@ Connection con;
 		}
 		con.close();
 	}
+	
+	public List<Employee> fetchEmployees() throws SQLException{
+		dbConnect();
+		String sql = "select * from employee";
+		List<Employee> list = new ArrayList();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery();
+			
+			while(rst.next()) {
+				list.add(new Employee(rst.getString("id"),
+						rst.getString("name"),
+						rst.getString("username"),
+						rst.getString("password"),
+						rst.getInt("currPts"),
+						rst.getInt("totalPts")));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		con.close();
+		return list;
+	}
 }
