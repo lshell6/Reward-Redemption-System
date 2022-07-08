@@ -1,4 +1,4 @@
-package com.g5;
+package com.main;
 
 public class GivePts {
 	private int numOfPts;
