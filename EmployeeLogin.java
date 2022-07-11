@@ -53,7 +53,7 @@ public class EmployeeLogin {
 					// call isValid to validate employee username
 					isValid = EmployeeUtility.validateUsername(db.fetchEmployees(),username);
 					if(!isValid) {
-						System.out.println("Invalid Username, Try Again!");
+						System.out.println("Invalid Password, Try Again!");
 					break;
 					}
 					// Prompt user to enter current password and new password (maybe confirm the new password?)
