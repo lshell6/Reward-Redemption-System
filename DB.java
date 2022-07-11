@@ -148,7 +148,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Employee(rst.getString("id"),
+				list.add(new Item(rst.getString("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
 			}
@@ -168,7 +168,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Employee(rst.getString("id"),
+				list.add(new Item(rst.getString("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
 				sql = sql + "+ ?"
