@@ -7,10 +7,11 @@ public class Employee {
 	private String password;
 	private int currPts;
 	private int totalPts;
+	
 	public Employee(){
 		super();
 	}
-	public Employee(String id, String name, String username, String password, int currPts, totalPts){
+	public Employee(String id, String name, String username, String password, int currPts, int totalPts){
 		super();
 		this.id = id;
 		this.name = name;
@@ -19,6 +20,7 @@ public class Employee {
 		this.currPts = currPts;
 		this.totalPts = totalPts;
 	}
+	
 	public String getId() {
 		return id;
 	}
@@ -55,6 +57,6 @@ public class Employee {
 	public void setTotalPts(int totalPts) {
 		this.totalPts = totalPts;
 	}
-
+	
 	
 }

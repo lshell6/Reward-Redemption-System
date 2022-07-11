@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.main.model.Employee;
-import com.main.model.Manager;
+import com.main.Employee;
+import com.main.Manager;
 
 public class DB {
 Connection con;
@@ -117,6 +117,7 @@ Connection con;
 	}
 
 	public Employee selectEmployee() throws SQLException{
+		List<Employee> list = new ArrayList();
 		dbConnect();
 		String sql = "select * from employee where id = ?";
 		Employee e = new Employee();
@@ -171,7 +172,7 @@ Connection con;
 				list.add(new Item(rst.getString("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
-				sql = sql + "+ ?"
+				sql = sql + "+ ?";
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
