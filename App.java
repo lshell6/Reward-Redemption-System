@@ -2,6 +2,7 @@ package com.main;
 
 import com.main.EmployeeLogin;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class App {
@@ -22,7 +23,11 @@ public class App {
 			switch(input) {
 				case 1:
 					EmployeeLogin emp = new EmployeeLogin();
+				try {
 					emp.ShowMenuAndProcess();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 					break;
 				case 2: 
 					break;
