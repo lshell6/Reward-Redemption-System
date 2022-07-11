@@ -43,6 +43,8 @@ public class EmployeeLogin {
 						 System.out.println("Invalid Password, Try Again!");
 					break;
 					 }
+					 System.out.println("Login Successful!");
+					 // IMPLEMENT NEW MENU FOR EMPLOYEES
 				case 2: 
 					System.out.println("Enter username");
 					username = sc.next();
