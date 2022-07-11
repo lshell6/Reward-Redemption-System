@@ -1,4 +1,4 @@
-package com.main.model;
+package com.main;
 
 public class Employee {
 	private String id;
@@ -7,6 +7,18 @@ public class Employee {
 	private String password;
 	private int currPts;
 	private int totalPts;
+	public Employee(){
+		super();
+	}
+	public Employee(String id, String name, String username, String password, int currPts, totalPts){
+		super();
+		this.id = id;
+		this.name = name;
+		this.username = username;
+		this.password = password;
+		this.currPts = currPts;
+		this.totalPts = totalPts;
+	}
 	public String getId() {
 		return id;
 	}
@@ -43,6 +55,6 @@ public class Employee {
 	public void setTotalPts(int totalPts) {
 		this.totalPts = totalPts;
 	}
-	
+
 	
 }
