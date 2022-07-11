@@ -133,8 +133,8 @@ Connection con;
 						rst.getInt("currPts"),
 						rst.getInt("totalPts")));
 			}
-		} catch(SQLException e) {
-			e.printStackTrace();
+		} catch(SQLException e1) {
+			e1.printStackTrace();
 		}
 		con.close();
 		return e;

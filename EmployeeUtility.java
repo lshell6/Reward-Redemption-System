@@ -15,10 +15,12 @@ public class EmployeeUtility {
 		}
 		return isPresent;
 	}
-	public static boolean validatePassword(List<Employee> list, String password) {
+	
+	// this is wrong, Should we use map for this?
+	public static boolean validatePassword(List<Employee> list, String password, String username) {
 		boolean isPresent = false;
 		for(Employee e: list) {
-			if(e.getPassword() == password) {
+			if(e.getUsername() == username && e.getPassword() == password) {
 				isPresent = true;
 				break;
 			}

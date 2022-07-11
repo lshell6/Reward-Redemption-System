@@ -21,7 +21,7 @@ public class App {
 			}
 			
 			switch(input) {
-				case 1:
+				case 1: // employee login
 					EmployeeLogin emp = new EmployeeLogin();
 				try {
 					emp.ShowMenuAndProcess();
@@ -29,7 +29,9 @@ public class App {
 					e.printStackTrace();
 				}
 					break;
-				case 2: 
+				case 2: // manager login
+					break;
+				default:
 					break;
 			}
 		}

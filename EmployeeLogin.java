@@ -27,6 +27,7 @@ public class EmployeeLogin {
 			
 			switch(input) {
 				case 1:
+					System.out.println("***** Login *****");
 					System.out.println("Enter username");
 					String username = sc.next();
 					// validate username
@@ -38,7 +39,7 @@ public class EmployeeLogin {
 					System.out.println("Enter password");
 					String password = sc.nextLine();
 					// validate password
-					isValid = EmployeeUtility.validatePassword(db.fetchEmployees(),password);
+					isValid = EmployeeUtility.validatePassword(db.fetchEmployees(),password, username);
 					 if(!isValid) {
 						 System.out.println("Invalid Password, Try Again!");
 					break;
@@ -46,6 +47,7 @@ public class EmployeeLogin {
 					 System.out.println("Login Successful!");
 					 // IMPLEMENT NEW MENU FOR EMPLOYEES
 				case 2: 
+					System.out.println("***** Change Password *****");
 					System.out.println("Enter username");
 					username = sc.next();
 					// call isValid to validate employee username
