@@ -30,35 +30,35 @@ public class EmployeeLogin {
 					System.out.println("***** Login *****");
 					System.out.println("Enter username");
 					String username = sc.next();
-					// validate username
-					 boolean isValid = EmployeeUtility.validateUsername(db.fetchEmployees(),username);
-					 if(!isValid) {
-						 System.out.println("Invalid Username, Try Again!");
-					 break;
-					 }
 					System.out.println("Enter password");
 					String password = sc.nextLine();
-					// validate password
-					isValid = EmployeeUtility.validatePassword(db.fetchEmployees(),password, username);
+					// validate username
+					 boolean isValid = EmployeeUtility.validateCredentials(db.fetchEmployees(),username, password);
 					 if(!isValid) {
-						 System.out.println("Invalid Password, Try Again!");
-					break;
+						 System.out.println("Invalid Credentials, Try Again!");
+					 break;
 					 }
+					 
 					 System.out.println("Login Successful!");
 					 // IMPLEMENT NEW MENU FOR EMPLOYEES
 				case 2: 
 					System.out.println("***** Change Password *****");
 					System.out.println("Enter username");
 					username = sc.next();
+					System.out.println("Enter current password");
+					password = sc.nextLine();
 					// call isValid to validate employee username
-					isValid = EmployeeUtility.validateUsername(db.fetchEmployees(),username);
+					isValid = EmployeeUtility.validateCredentials(db.fetchEmployees(),username,password);
 					if(!isValid) {
-						System.out.println("Invalid Password, Try Again!");
+						System.out.println("Invalid Credentials, Try Again!");
 					break;
 					}
-					// Prompt user to enter current password and new password (maybe confirm the new password?)
+					// Prompt user to enter new password (maybe confirm the new password?)
 					// after input update new password
-					
+					System.out.println("Enter new password");
+					String newPassword = sc.nextLine();
+					System.out.println("Enter new password");
+					String newPasswordConfirm = sc.nextLine();
 				case 3: 
 					System.out.println("Enter name");
 					String name = sc.nextLine();

@@ -28,6 +28,14 @@ Connection con;
 			e.printStackTrace();
 		}
 	}
+	
+	public void dbClose() {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void insertEmployee(Employee employee) throws SQLException {
 		dbConnect();
@@ -45,7 +53,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public void insertManager(Manager manager) throws SQLException {
@@ -62,7 +70,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public void updateManagerPassword(Manager manager) throws SQLException {
@@ -76,7 +84,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public void updateEmployeePassword(Employee employee) throws SQLException {
@@ -90,7 +98,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public List<Employee> fetchEmployees() throws SQLException{
@@ -112,8 +120,32 @@ Connection con;
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return list;
+	}
+	
+	public Employee fetchEmployee(String username){
+		dbConnect();
+		String sql="select * from employee where username=?";
+		Employee e = new Employee(); 
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet  rst = pstmt.executeQuery();
+			rst.next();
+			e = new Employee(rst.getString("id"),
+					rst.getString("name"),
+					rst.getString("username"),
+					rst.getString("password"),
+					rst.getInt("currPts"),
+					rst.getInt("totalPts"));
+					  
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		dbClose();
+		return e;
 	}
 
 	public Employee selectEmployee() throws SQLException{
@@ -136,7 +168,7 @@ Connection con;
 		} catch(SQLException e1) {
 			e1.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return e;
 	}
 
@@ -156,7 +188,7 @@ Connection con;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return list;
 	}
 
@@ -177,7 +209,7 @@ Connection con;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return list;
 	}
 }
