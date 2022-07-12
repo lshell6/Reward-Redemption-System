@@ -43,7 +43,7 @@ Connection con;
 				+ "values (?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, employee.getId());
+			pstmt.setInt(1, employee.getId());
 			pstmt.setString(2, employee.getName());
 			pstmt.setString(3, employee.getUsername());
 			pstmt.setString(4, employee.getPassword());
@@ -62,7 +62,7 @@ Connection con;
 				+ "values (?,?,?,?)";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, manager.getId());
+			pstmt.setInt(1, manager.getId());
 			pstmt.setString(2, manager.getName());
 			pstmt.setString(3, manager.getUsername());
 			pstmt.setString(4, manager.getPassword());
@@ -110,7 +110,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 			
 			while(rst.next()) {
-				list.add(new Employee(rst.getString("id"),
+				list.add(new Employee(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getString("username"),
 						rst.getString("password"),
@@ -133,7 +133,7 @@ Connection con;
 			pstmt.setString(1, username);
 			ResultSet  rst = pstmt.executeQuery();
 			rst.next();
-			e = new Employee(rst.getString("id"),
+			e = new Employee(rst.getInt("id"),
 					rst.getString("name"),
 					rst.getString("username"),
 					rst.getString("password"),
@@ -158,7 +158,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Employee(rst.getString("id"),
+				list.add(new Employee(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getString("username"),
 						rst.getString("password"),
@@ -181,7 +181,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Item(rst.getString("id"),
+				list.add(new Item(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
 			}
@@ -201,7 +201,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Item(rst.getString("id"),
+				list.add(new Item(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
 				sql = sql + "+ ?";

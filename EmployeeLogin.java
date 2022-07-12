@@ -55,10 +55,18 @@ public class EmployeeLogin {
 					}
 					// Prompt user to enter new password (maybe confirm the new password?)
 					// after input update new password
+					Employee emp = db.fetchEmployee(username);
 					System.out.println("Enter new password");
 					String newPassword = sc.nextLine();
-					System.out.println("Enter new password");
+					System.out.println("Confirm new password");
 					String newPasswordConfirm = sc.nextLine();
+					if(newPassword.equals(newPasswordConfirm)) {
+						employee.setPassword(newPassword);
+						db.updateEmployeePassword(employee);
+					}
+					else {
+						System.out.println("Passwords do not match.");
+					}
 				case 3: 
 					System.out.println("Enter name");
 					String name = sc.nextLine();
@@ -66,9 +74,9 @@ public class EmployeeLogin {
 					username = sc.next();
 					// check if username is taken // else create new employee
 					System.out.println("Enter password");
-					password = sc.nextLine();
-					
+					password = sc.nextLine();		
 					// once user input is complete store the new account into the data base.
+					Employee newEmp = new Employee();
 					break;
 				default:
 					break;

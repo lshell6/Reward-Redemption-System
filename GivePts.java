@@ -30,8 +30,8 @@ public class GivePts {
 		}
 		
 	public GivePts() {
-		String mID = m.getId();
-		String eID = e.getId();
+		int mID = m.getId();
+		int eID = e.getId();
 		e.setCurrPts(totPts);
 		e.setTotalPts(totPts);
 	}
