@@ -37,17 +37,6 @@ CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Items` (
   PRIMARY KEY (`Item_ID`));
 
 
-
-CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Employee_has_Items` (
-  `Employee_ID` INT NOT NULL,
-  `Items_Item_ID` INT NOT NULL,
-  PRIMARY KEY (`Employee_ID`, `Items_Item_ID`));
-
-CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Gives_Pts` (
-  `Manager_ID` INT NOT NULL,
-  `Employee_ID` INT NOT NULL,
-  `Points` INT NULL);
-
 insert into Manager(name, username, password) values
 (
 "Barbara",
