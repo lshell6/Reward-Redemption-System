@@ -124,6 +124,27 @@ Connection con;
 		return list;
 	}
 	
+	public List<Manager> fetchManager() throws SQLException{
+		dbConnect();
+		String sql = "select * from manager";
+		List<Manager> list = new ArrayList();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery();
+			
+			while(rst.next()) {
+				list.add(new Manager(rst.getInt("id"),
+						rst.getString("name"),
+						rst.getString("username"),
+						rst.getString("password")));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+		return list;
+	}
+	
 	public Employee fetchEmployee(String username){
 		dbConnect();
 		String sql="select * from employee where username=?";
@@ -146,6 +167,27 @@ Connection con;
 		}
 		dbClose();
 		return e;
+	}
+	
+	public Manager fetchManager(String username){
+		dbConnect();
+		String sql="select * from manager where username=?";
+		Manager m = new Manager(); 
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet  rst = pstmt.executeQuery();
+			rst.next();
+			m = new Manager(rst.getInt("id"),
+					rst.getString("name"),
+					rst.getString("username"),
+					rst.getString("password"));
+					  
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		dbClose();
+		return m;
 	}
 
 	public Employee selectEmployee() throws SQLException{
@@ -170,6 +212,28 @@ Connection con;
 		}
 		dbClose();
 		return e;
+	}
+	
+	public Manager selectManager() throws SQLException{
+		List<Manager> list = new ArrayList();
+		dbConnect();
+		String sql = "select * from manager where id = ?";
+		Manager m = new Manager();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery();
+
+			while(rst.next()) {
+				list.add(new Manager(rst.getInt("id"),
+						rst.getString("name"),
+						rst.getString("username"),
+						rst.getString("password")));
+			}
+		} catch(SQLException e1) {
+			e1.printStackTrace();
+		}
+		dbClose();
+		return m;
 	}
 
 	public List<Item> fetchItems() throws SQLException{

@@ -33,7 +33,7 @@ public class EmployeeLogin {
 					System.out.println("Enter password");
 					String password = sc.nextLine();
 					// validate username
-					 boolean isValid = EmployeeUtility.validateCredentials(db.fetchEmployees(),username, password);
+					 boolean isValid = EmployeeUtility.validateEmployeeCredentials(db.fetchEmployees(),username, password);
 					 if(!isValid) {
 						 System.out.println("Invalid Credentials, Try Again!");
 					 break;
@@ -48,7 +48,7 @@ public class EmployeeLogin {
 					System.out.println("Enter current password");
 					password = sc.nextLine();
 					// call isValid to validate employee username
-					isValid = EmployeeUtility.validateCredentials(db.fetchEmployees(),username,password);
+					isValid = EmployeeUtility.validateEmployeeCredentials(db.fetchEmployees(),username,password);
 					if(!isValid) {
 						System.out.println("Invalid Credentials, Try Again!");
 					break;
@@ -69,7 +69,7 @@ public class EmployeeLogin {
 					}
 				case 3: 
 					System.out.println("Enter name");
-					String name = sc.nextLine();
+					String name = sc.next();
 					System.out.println("Enter username");
 					username = sc.next();
 					// check if username is taken // else create new employee
@@ -77,6 +77,14 @@ public class EmployeeLogin {
 					password = sc.nextLine();		
 					// once user input is complete store the new account into the data base.
 					Employee newEmp = new Employee();
+					newEmp.setName(name);
+					newEmp.setUsername(username);
+					newEmp.setPassword(password);
+					newEmp.setCurrPts(0);
+					newEmp.setTotalPts(0);
+					
+					db.insertEmployee(newEmp);
+					
 					break;
 				default:
 					break;

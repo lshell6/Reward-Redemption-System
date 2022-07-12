@@ -6,6 +6,16 @@ public class Manager {
 	private String username;
 	private String password;
 	
+	public Manager(){
+		super();
+	}
+	public Manager(int id, String name, String username, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.username = username;
+		this.password = password;
+	}
 	public int getId() {
 		return id;
 	}

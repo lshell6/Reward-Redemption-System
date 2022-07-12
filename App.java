@@ -30,6 +30,12 @@ public class App {
 				}
 					break;
 				case 2: // manager login
+					ManagerLogin man = new ManagerLogin();
+					try {
+						man.ShowMenuAndProcess();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 					break;
 				default:
 					break;
