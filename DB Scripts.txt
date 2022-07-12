@@ -1,3 +1,5 @@
+show tables;
+
 create database hex_maverick_75572_db;
 use hex_maverick_75572_db;
 
@@ -45,3 +47,80 @@ CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Gives_Pts` (
   `Manager_ID` INT NOT NULL,
   `Employee_ID` INT NOT NULL,
   `Points` INT NULL);
+
+insert into Manager(name, username, password) values
+(
+"Barbara",
+"12345",
+"iAmTheBest"
+),
+(
+"James",
+"67890",
+"coolestDude"
+),
+(
+"Jeffery",
+"94620",
+">James"
+);
+
+alter table Employee add name varchar(45);
+
+select * from Employee;
+
+insert into Employee(Username, Password, Curr_Points, Total_Points, name) values
+(
+"58473",
+"pass123",
+1200,
+20000,
+"Josh"
+),
+(
+"857383",
+"word5678",
+56,
+2000,
+"Jeremy"
+),
+(
+"38565",
+"hi9999",
+700,
+700,
+"Destiny"
+);
+
+insert into Items(name, PtValue) values
+(
+"face mask",
+50
+),
+(
+"t-shirt",
+250
+),
+(
+"hydroflask",
+750
+);
+
+select * from transaction;
+insert into transaction (NumOfItems, Point_Cost, Employee_ID) values
+(
+2,
+1000,
+58473
+),
+(
+1,
+50,
+857383
+),
+(
+3,
+400,
+38565
+);
+
