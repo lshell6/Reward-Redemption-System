@@ -158,47 +158,77 @@ CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Gives_Pts` (
   `Manager_ID` INT NOT NULL,
   `Employee_ID` INT NOT NULL,
   `NumOfPts` INT NULL,
-  PRIMARY KEY (`Manager_ID`, `Employee_ID`),
-  INDEX `Employee_ID_idx` (`Employee_ID` ASC),
-  CONSTRAINT `Manager_ID`
-    FOREIGN KEY (`Manager_ID`)
-    REFERENCES `hex_maverick_75572_db`.`manager` (`Manager_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Employee_ID`
-    FOREIGN KEY (`Employee_ID`)
-    REFERENCES `hex_maverick_75572_db`.`employee` (`Employee_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  PRIMARY KEY (`Manager_ID`, `Employee_ID`));
 
 
 CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Makes` (
   `Employee_ID` INT NOT NULL,
   `Transaction_ID` INT NOT NULL,
   `Transaction_Date` DATE NULL,
-  PRIMARY KEY (`Employee_ID`, `Transaction_ID`),
-  INDEX `Transaction_ID_idx` (`Transaction_ID` ASC),
-    FOREIGN KEY (`Employee_ID`)
-    REFERENCES `hex_maverick_75572_db`.`employee` (`Employee_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`Transaction_ID`)
-    REFERENCES `hex_maverick_75572_db`.`transaction` (`Transaction_ID`);
+  PRIMARY KEY (`Employee_ID`, `Transaction_ID`));
 
 CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Contains` (
   `Transaction_ID` INT NOT NULL,
   `Item_ID` INT NOT NULL,
   `Quantity` INT NULL,
-  PRIMARY KEY (`Transaction_ID`, `Item_ID`),
-  INDEX `Item_ID_idx` (`Item_ID` ASC),
-  CONSTRAINT `Transaction_ID`
-    FOREIGN KEY (`Transaction_ID`)
-    REFERENCES `hex_maverick_75572_db`.`transaction` (`Transaction_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Item_ID`
-    FOREIGN KEY (`Item_ID`)
-    REFERENCES `hex_maverick_75572_db`.`items` (`Item_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  PRIMARY KEY (`Transaction_ID`, `Item_ID`));
+  
+    insert into Gives_Pts (Manager_ID, Employee_ID, NumOfPts) values
+    (
+    12345,
+    38565,
+    200
+    ),
+    (
+    67890,
+    857383,
+    50
+    ),
+    (
+    94620,
+    58473,
+    100
+    );
+    
+    select * from Makes;
+    
+    insert into Makes(Employee_ID, Transaction_ID, Transaction_Date) values
+    (
+    1,
+    10,
+    '2021-07-09'
+    );
+    insert into Makes(Employee_ID, Transaction_ID, Transaction_Date) values
+    (
+    2,
+    14,
+    '2022-09-02'
+    );
+    insert into Makes(Employee_ID, Transaction_ID, Transaction_Date) values
+    (
+    3,
+    21,
+    '2022-06-05'
+    );
+    
+    insert into Contains(Transaction_ID, Item_ID, Quantity) values
+    (
+    4,
+    2,
+    1
+    );
+    
+    insert into Contains(Transaction_ID, Item_ID, Quantity) values
+    (
+    6,
+    1,
+    3
+    );
+    
+    insert into Contains(Transaction_ID, Item_ID, Quantity) values
+    (
+    9,
+    3,
+    1
+    );
+    
