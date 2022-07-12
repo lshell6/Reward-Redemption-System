@@ -87,6 +87,33 @@ Connection con;
 		dbClose();
 	}
 	
+	public void updateEmployeeCurrentPoints(Employee employee) throws SQLException {
+		dbConnect();
+		String sql = "update employee(id,name,username,password,currPts,totalPts) set currPts = "
+				+ "?" + " where id = " + employee.getId();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(5, employee.getCurrPts());
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+	}
+	public void updateEmployeeTotalPoints(Employee employee) throws SQLException {
+		dbConnect();
+		String sql = "update employee(id,name,username,password,currPts,totalPts) set totalPts = "
+				+ "?" + " where id = " + employee.getId();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(6, employee.getTotalPts());
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+	}
+	
 	public void updateEmployeePassword(Employee employee) throws SQLException {
 		dbConnect();
 		String sql = "update employee(id,name,username,password,currPts,totalPts) set password = "

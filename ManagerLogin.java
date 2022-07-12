@@ -34,12 +34,33 @@ public class ManagerLogin {
 					// validate username
 					 boolean isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),username, password);
 					 if(!isValid) {
-						 System.out.println("Invalid Credentials, Try Again!");
-					 break;
+					 System.out.println("Invalid Credentials, Try Again!");
+					 	break;
 					 }
 					 
-					 System.out.println("Login Successful!");
+					System.out.println("Login Successful!");
 					 // IMPLEMENT NEW MENU FOR MANAGERS
+					while(true) {
+						System.out.println("*****Manager Portal*****");
+						System.out.println("1. Give Points to Employee");
+						System.out.println("0. To Exit");
+						System.out.println("Enter your input: ");
+						input = sc.nextInt();
+						if(input == 0) {
+							System.out.println("Exiting..");
+							break; 
+						}
+						switch(input) {
+							case 1: 
+								GivePts gp = new GivePts();
+								gp.awardPoints();
+								break;
+							default:
+								break;
+						}
+					}
+					
+						
 				case 2: 
 					System.out.println("***** Change Password *****");
 					System.out.println("Enter username");
