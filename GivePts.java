@@ -78,6 +78,7 @@ public class GivePts {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				break;
 		}
 
 		
