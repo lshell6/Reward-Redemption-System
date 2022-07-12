@@ -179,12 +179,10 @@ CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Makes` (
   `Transaction_Date` DATE NULL,
   PRIMARY KEY (`Employee_ID`, `Transaction_ID`),
   INDEX `Transaction_ID_idx` (`Transaction_ID` ASC),
-  CONSTRAINT `Employee_ID`
     FOREIGN KEY (`Employee_ID`)
     REFERENCES `hex_maverick_75572_db`.`employee` (`Employee_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `Transaction_ID`
     FOREIGN KEY (`Transaction_ID`)
     REFERENCES `hex_maverick_75572_db`.`transaction` (`Transaction_ID`);
 
