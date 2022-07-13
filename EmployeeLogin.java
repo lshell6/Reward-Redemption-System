@@ -40,7 +40,8 @@ public class EmployeeLogin {
 					 }
 					 
 					 System.out.println("Login Successful!");
-					 // IMPLEMENT NEW MENU FOR EMPLOYEES
+					 EmployeeMenu empMenu = new EmployeeMenu();
+					 empMenu.EmpMenu(username);
 				case 2: 
 					System.out.println("***** Change Password *****");
 					System.out.println("Enter username");
