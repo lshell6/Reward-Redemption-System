@@ -1,7 +1,7 @@
 package com.main;
 
 public class Item {
-	private String id;
+	private int id;
 	private String name;
 	private int ptValue;
 	
@@ -9,18 +9,18 @@ public class Item {
 		super();
 	}
 	
-	Item(String id, String name, int ptValue){
+	Item(int id, String name, int ptValue){
 		super();
 		this.id = id;
 		this.name = name;
 		this.ptValue = ptValue;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

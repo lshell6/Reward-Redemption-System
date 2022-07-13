@@ -1,19 +1,18 @@
 package com.main;
-import com.main.Employee;
-import com.main.EmployeeUtility;
+import com.main.Manager;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class EmployeeLogin {
-	
+public class ManagerLogin {
+
 	public void ShowMenuAndProcess() throws SQLException{
 		DB db = new DB();
-		Employee employee = new Employee(); 
+		Manager manager = new Manager(); 
 		
 		while(true) {
 			Scanner sc = new Scanner(System.in);
-			System.out.println("*****Employee Login*****");
+			System.out.println("*****Manager Login*****");
 			System.out.println("1. Login");
 			System.out.println("2. Change Password");
 			System.out.println("3. Register");
@@ -33,36 +32,57 @@ public class EmployeeLogin {
 					System.out.println("Enter password");
 					String password = sc.nextLine();
 					// validate username
-					 boolean isValid = EmployeeUtility.validateEmployeeCredentials(db.fetchEmployees(),username, password);
+					 boolean isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),username, password);
 					 if(!isValid) {
-						 System.out.println("Invalid Credentials, Try Again!");
-					 break;
+					 System.out.println("Invalid Credentials, Try Again!");
+					 	break;
 					 }
 					 
-					 System.out.println("Login Successful!");
-					 // IMPLEMENT NEW MENU FOR EMPLOYEES
+					System.out.println("Login Successful!");
+					 // IMPLEMENT NEW MENU FOR MANAGERS
+					while(true) {
+						System.out.println("*****Manager Portal*****");
+						System.out.println("1. Give Points to Employee");
+						System.out.println("0. To Exit");
+						System.out.println("Enter your input: ");
+						input = sc.nextInt();
+						if(input == 0) {
+							System.out.println("Exiting..");
+							break; 
+						}
+						switch(input) {
+							case 1: 
+								GivePts gp = new GivePts();
+								gp.awardPoints();
+								break;
+							default:
+								break;
+						}
+					}
+					
+						
 				case 2: 
 					System.out.println("***** Change Password *****");
 					System.out.println("Enter username");
 					username = sc.next();
 					System.out.println("Enter current password");
 					password = sc.nextLine();
-					// call isValid to validate employee username
-					isValid = EmployeeUtility.validateEmployeeCredentials(db.fetchEmployees(),username,password);
+					// call isValid to validate manager username
+					isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),username,password);
 					if(!isValid) {
 						System.out.println("Invalid Credentials, Try Again!");
 					break;
 					}
 					// Prompt user to enter new password (maybe confirm the new password?)
 					// after input update new password
-					Employee emp = db.fetchEmployee(username);
+					Manager man = db.fetchManager(username);
 					System.out.println("Enter new password");
 					String newPassword = sc.nextLine();
 					System.out.println("Confirm new password");
 					String newPasswordConfirm = sc.nextLine();
 					if(newPassword.equals(newPasswordConfirm)) {
-						employee.setPassword(newPassword);
-						db.updateEmployeePassword(employee);
+						manager.setPassword(newPassword);
+						db.updateManagerPassword(manager);
 					}
 					else {
 						System.out.println("Passwords do not match.");
@@ -72,18 +92,16 @@ public class EmployeeLogin {
 					String name = sc.next();
 					System.out.println("Enter username");
 					username = sc.next();
-					// check if username is taken // else create new employee
+					// check if username is taken // else create new manager
 					System.out.println("Enter password");
 					password = sc.nextLine();		
 					// once user input is complete store the new account into the data base.
-					Employee newEmp = new Employee();
-					newEmp.setName(name);
-					newEmp.setUsername(username);
-					newEmp.setPassword(password);
-					newEmp.setCurrPts(0);
-					newEmp.setTotalPts(0);
+					Manager newMan = new Manager();
+					newMan.setName(name);
+					newMan.setUsername(username);
+					newMan.setPassword(password);
 					
-					db.insertEmployee(newEmp);
+					db.insertManager(newMan);
 					
 					break;
 				default:

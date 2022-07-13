@@ -28,6 +28,14 @@ Connection con;
 			e.printStackTrace();
 		}
 	}
+	
+	public void dbClose() {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void insertEmployee(Employee employee) throws SQLException {
 		dbConnect();
@@ -35,7 +43,7 @@ Connection con;
 				+ "values (?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, employee.getId());
+			pstmt.setInt(1, employee.getId());
 			pstmt.setString(2, employee.getName());
 			pstmt.setString(3, employee.getUsername());
 			pstmt.setString(4, employee.getPassword());
@@ -45,7 +53,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public void insertManager(Manager manager) throws SQLException {
@@ -54,7 +62,7 @@ Connection con;
 				+ "values (?,?,?,?)";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, manager.getId());
+			pstmt.setInt(1, manager.getId());
 			pstmt.setString(2, manager.getName());
 			pstmt.setString(3, manager.getUsername());
 			pstmt.setString(4, manager.getPassword());
@@ -62,7 +70,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public void updateManagerPassword(Manager manager) throws SQLException {
@@ -76,7 +84,34 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
+	}
+	
+	public void updateEmployeeCurrentPoints(Employee employee) throws SQLException {
+		dbConnect();
+		String sql = "update employee(id,name,username,password,currPts,totalPts) set currPts = "
+				+ "?" + " where id = " + employee.getId();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(5, employee.getCurrPts());
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+	}
+	public void updateEmployeeTotalPoints(Employee employee) throws SQLException {
+		dbConnect();
+		String sql = "update employee(id,name,username,password,currPts,totalPts) set totalPts = "
+				+ "?" + " where id = " + employee.getId();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(6, employee.getTotalPts());
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
 	}
 	
 	public void updateEmployeePassword(Employee employee) throws SQLException {
@@ -90,7 +125,7 @@ Connection con;
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 	}
 	
 	public List<Employee> fetchEmployees() throws SQLException{
@@ -102,7 +137,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 			
 			while(rst.next()) {
-				list.add(new Employee(rst.getString("id"),
+				list.add(new Employee(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getString("username"),
 						rst.getString("password"),
@@ -112,8 +147,74 @@ Connection con;
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return list;
+	}
+	
+	public List<Manager> fetchManager() throws SQLException{
+		dbConnect();
+		String sql = "select * from manager";
+		List<Manager> list = new ArrayList();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery();
+			
+			while(rst.next()) {
+				list.add(new Manager(rst.getInt("id"),
+						rst.getString("name"),
+						rst.getString("username"),
+						rst.getString("password")));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+		return list;
+	}
+	
+	public Employee fetchEmployee(String username){
+		dbConnect();
+		String sql="select * from employee where username=?";
+		Employee e = new Employee(); 
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet  rst = pstmt.executeQuery();
+			rst.next();
+			e = new Employee(rst.getInt("id"),
+					rst.getString("name"),
+					rst.getString("username"),
+					rst.getString("password"),
+					rst.getInt("currPts"),
+					rst.getInt("totalPts"));
+					  
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		dbClose();
+		return e;
+	}
+	
+	public Manager fetchManager(String username){
+		dbConnect();
+		String sql="select * from manager where username=?";
+		Manager m = new Manager(); 
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet  rst = pstmt.executeQuery();
+			rst.next();
+			m = new Manager(rst.getInt("id"),
+					rst.getString("name"),
+					rst.getString("username"),
+					rst.getString("password"));
+					  
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		dbClose();
+		return m;
 	}
 
 	public Employee selectEmployee() throws SQLException{
@@ -126,18 +227,40 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Employee(rst.getString("id"),
+				list.add(new Employee(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getString("username"),
 						rst.getString("password"),
 						rst.getInt("currPts"),
 						rst.getInt("totalPts")));
 			}
-		} catch(SQLException e) {
-			e.printStackTrace();
+		} catch(SQLException e1) {
+			e1.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return e;
+	}
+	
+	public Manager selectManager() throws SQLException{
+		List<Manager> list = new ArrayList();
+		dbConnect();
+		String sql = "select * from manager where id = ?";
+		Manager m = new Manager();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery();
+
+			while(rst.next()) {
+				list.add(new Manager(rst.getInt("id"),
+						rst.getString("name"),
+						rst.getString("username"),
+						rst.getString("password")));
+			}
+		} catch(SQLException e1) {
+			e1.printStackTrace();
+		}
+		dbClose();
+		return m;
 	}
 
 	public List<Item> fetchItems() throws SQLException{
@@ -149,14 +272,14 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Item(rst.getString("id"),
+				list.add(new Item(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return list;
 	}
 
@@ -169,7 +292,7 @@ Connection con;
 			ResultSet rst = pstmt.executeQuery();
 
 			while(rst.next()) {
-				list.add(new Item(rst.getString("id"),
+				list.add(new Item(rst.getInt("id"),
 						rst.getString("name"),
 						rst.getInt("ptValue")));
 				sql = sql + "+ ?";
@@ -177,7 +300,7 @@ Connection con;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		con.close();
+		dbClose();
 		return list;
 	}
 }

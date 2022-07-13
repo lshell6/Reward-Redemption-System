@@ -1,13 +1,14 @@
 package com.main;
 
 public class Transaction {
-	private String id;
+	private int id;
 	private int numOfItems;
 	private int totalPtValue;
-	public String getId() {
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public int getNumOfItems() {

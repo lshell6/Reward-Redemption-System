@@ -1,7 +1,7 @@
 package com.main;
 
 public class Employee {
-	private String id;
+	private int id;
 	private String name;
 	private String username;
 	private String password;
@@ -11,7 +11,7 @@ public class Employee {
 	public Employee(){
 		super();
 	}
-	public Employee(String id, String name, String username, String password, int currPts, int totalPts){
+	public Employee(int id, String name, String username, String password, int currPts, int totalPts){
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,10 +21,10 @@ public class Employee {
 		this.totalPts = totalPts;
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
