@@ -33,7 +33,8 @@ public class EmployeeMenu {
 				System.out.println("Select an item to redeem: ");
 				input = sc.nextInt();
 				Item item = new Item();
-				if (item.getId() != input) {
+				int id = item.getId();
+				if (id != input) {
 					System.out.println("Invalid selection, try again.");
 					break;
 				}
