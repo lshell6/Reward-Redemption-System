@@ -38,7 +38,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`employee_has_items` (
   `Employee_Employee_ID` VARCHAR(45) NOT NULL,
-  `Items_Item_ID` VARCHAR(45) NOT NULL);
+  `Items_Item_ID` VARCHAR(45) NOT NULL)
+  `Quantity` INT DEFAULT 0;
 
 
 -- -----------------------------------------------------
