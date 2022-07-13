@@ -1,0 +1,76 @@
+-- MySQL Workbench Forward Engineering
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`employee`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`employee` (`Employee_ID` INT PRIMARY KEY AUTO_INCREMENT,
+  `Username` VARCHAR(45) NOT NULL,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `Password` VARCHAR(45) NULL DEFAULT NULL,
+  `Curr_Points` INT NULL DEFAULT NULL,
+  `Total_Ponts` INT NULL DEFAULT NULL);
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`items` (
+  `Item_ID` VARCHAR(45) NOT NULL,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `PtValue` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`Item_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`employee_has_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`employee_has_items` (
+  `Employee_Employee_ID` VARCHAR(45) NOT NULL,
+  `Items_Item_ID` VARCHAR(45) NOT NULL);
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`manager`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`manager` (
+  `Manager_ID` INT AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `Username` VARCHAR(45) NULL DEFAULT NULL,
+  `Password` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`Manager_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`gives_pts`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`gives_pts` (
+  `Manager_Manager_ID` VARCHAR(45) NOT NULL,
+  `Employee_Employee_ID` VARCHAR(45) NOT NULL,
+  `Points` INT NULL DEFAULT 0);
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`transaction`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`transaction` (
+  `Transaction_ID` VARCHAR(45) PRIMARY KEY NOT NULL,
+  `NumOfItems` INT NOT NULL,
+  `Point_Cost` INT NOT NULL,
+  `Employee_Employee_ID` VARCHAR(45) NOT NULL);
+
+
+ show tables;
