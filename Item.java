@@ -39,4 +39,9 @@ public class Item {
 	public void setPtValue(int ptValue) {
 		this.ptValue = ptValue;
 	}
+	
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", name=" + name + ", ptValue=" + ptValue + "]";
+	}
 }
