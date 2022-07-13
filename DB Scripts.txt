@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`Employee` (
   `Username` VARCHAR(45) NULL,
   `Password` VARCHAR(45) NULL,
   `Curr_Points` INT NULL,
-  `Total_Ponts` INT NULL,
+  `Total_Points` INT NULL,
   PRIMARY KEY (`Employee_ID`));
 
 
