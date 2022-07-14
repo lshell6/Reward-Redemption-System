@@ -3,6 +3,7 @@
 1. Members and Tasks
 
 Kyung Joo: 
+
 Tasks Given: 
 - EmployeeLogin
 - EmployeeUtility
@@ -17,6 +18,7 @@ Tasks Completed:
 - ManagerLogin
 
 Kofi Boateng: 
+
 Tasks Given: 
 - Employee menu
 - redeem points
@@ -28,11 +30,15 @@ Tasks Completed:
 - give points
 
 Member 3: 
+
 Tasks Given:
+
 Tasks Completed:
 
 Member 4: 
+
 Tasks Given:
+
 Tasks Completed:
 
 
