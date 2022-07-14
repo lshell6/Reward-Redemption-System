@@ -34,26 +34,33 @@ public class EmployeeMenu {
 				input = sc.nextInt();
 				Item item = new Item();
 				int id = item.getId();
+				int curPts = emp.getCurrPts();
+				int totPts = emp.getTotalPts();
+				int cost = item.getPtValue();
 				if (id != input) {
 					System.out.println("Invalid selection, try again.");
 					break;
 				}
-				if (emp.getCurrPts() < item.getPtValue()) {
+				if (curPts < cost) {
 					System.out.println("Insufficient funds.");
 					break;
 				}
-				int cost = item.getPtValue();
 				List<Item> cart = new ArrayList<>();
 				cart.add(item);
-				System.out.println("Item added to cart. Checkout(Y/N)?");
+				System.out.println("Item added to cart. Checkout?(Y/N)");
 				String inputC = sc.nextLine();
-				if (inputC.equals("Y") || inputC.equals("y")) {
-					Transaction transaction = new Transaction();
-					// item transaction here
+				if (inputC.equals("N") || inputC.equals("n")) {
+					break;
 				}
+				Redeem transaction = new Redeem();
+				totPts = transaction.Checkout(cost, curPts, cart);
+				emp.setTotalPts(totPts);
+				emp.setCurrPts(totPts);
+				pts = totPts;
+				System.out.println("Item redeemed.");
 				break;
 			case 2:
-				int pts = emp.getCurrPts();
+				pts = emp.getCurrPts();
 				System.out.println("Current points: " + pts);
 				break;
 			default:
