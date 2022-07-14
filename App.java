@@ -1,61 +1,47 @@
 package com.main;
 
+import com.main.EmployeeLogin;
+
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class App {
 	public static void main(String[] args) {
-		DB db = new DB();
-		Employee employee = new Employee(); 
 		
-		while(true) {
+		while (true) {
 			Scanner sc = new Scanner(System.in);
-			System.out.println("*****Reward System*****");
-			System.out.println("1. Login");
-			System.out.println("2. Change Password");
-			System.out.println("3. Register");
-			System.out.println("0. To Exit");
-			System.out.println("Enter your input: ");
+			System.out.println("***** Rewards System *****");
+			System.out.println("1. Employee Login");
+			System.out.println("2. Manager Login");
+			System.out.println("0. Exit");
 			int input = sc.nextInt();
 			if(input == 0) {
-				System.out.println("Exiting.. Bye!!");
-				break; 
+				System.out.println("Exiting... Bye!");
+				break;
 			}
 			
 			switch(input) {
-				case 1:
-					System.out.println("Enter username");
-					String username = sc.next();
-					// validate username
-					System.out.println("Enter password");
-					String password = sc.nextLine();
-					// validate password
+				case 1: // employee login
+					EmployeeLogin emp = new EmployeeLogin();
+				try {
+					emp.ShowMenuAndProcess();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 					break;
-				case 2: 
-					System.out.println("Enter username");
-					username = sc.next();
-					// call isValid to validate employee username
-					if(true) { // if (!isValid)
-						System.out.println("Invalid ID, Try Again!");
-						break;
+				case 2: // manager login
+					ManagerLogin man = new ManagerLogin();
+					try {
+						man.ShowMenuAndProcess();
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
-					
-					
-					break;
-				case 3: 
-					System.out.println("Enter name");
-					String name = sc.nextLine();
-					System.out.println("Enter username");
-					username = sc.next();
-					// check if username is taken // else create new employee
-					System.out.println("Enter password");
-					password = sc.nextLine();
 					break;
 				default:
 					break;
 			}
-				
 		}
-		
 	}
+
 }
 

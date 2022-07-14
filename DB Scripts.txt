@@ -1,0 +1,112 @@
+
+insert into Manager(name, username, password) values
+(
+"Barbara",
+"12345",
+"iAmTheBest"
+),
+(
+"James",
+"67890",
+"coolestDude"
+),
+(
+"Jeffery",
+"94620",
+">James"
+);
+
+
+insert into Employee(Username, Name, Password, Curr_Points, Total_Points, name) values
+(
+"58473",
+"Josh",
+"pass123",
+1200,
+20000
+),
+(
+"857383",
+"Jeremy",
+"word5678",
+56,
+2000
+),
+(
+"38565",
+"Destiny",
+"hi9999",
+700,
+700
+);
+
+insert into Items(name, PtValue) values
+(
+"face mask",
+50
+),
+(
+"t-shirt",
+250
+),
+(
+"hydroflask",
+750
+);
+
+insert into transaction (NumOfItems, Point_Cost, Employee_ID) values
+(
+2,
+1000,
+58473
+),
+(
+1,
+50,
+857383
+),
+(
+3,
+400,
+38565
+);
+  
+    insert into gives_pts (Manager_ID, Employee_ID, NumOfPts) values
+    (
+    12345,
+    38565,
+    200
+    ),
+    (
+    67890,
+    857383,
+    50
+    ),
+    (
+    94620,
+    58473,
+    100
+    );
+    
+    
+    insert into employee_has_items(Employee_ID, Item_ID, Quantity) values
+    (
+    4,
+    2,
+    1
+    );
+    
+    insert into employee_has_items(Employee, Item_ID, Quantity) values
+    (
+    6,
+    1,
+    3
+    );
+    
+    insert into employee_has_items(Employee, Item_ID, Quantity) values
+    (
+    9,
+    3,
+    1
+    );
+    

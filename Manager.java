@@ -1,14 +1,25 @@
 package com.main;
 
 public class Manager {
-	private String id;
+	private int id;
 	private String name;
 	private String username;
 	private String password;
-	public String getId() {
+	
+	public Manager(){
+		super();
+	}
+	public Manager(int id, String name, String username, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.username = username;
+		this.password = password;
+	}
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
