@@ -1,6 +1,7 @@
 # Reward-Redemption-System
 
 1. Members and Tasks
+
 Kyung Joo: 
 Tasks Given:
 Tasks Completed:
