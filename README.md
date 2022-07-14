@@ -6,9 +6,9 @@ Kyung Joo:
 Tasks Given:
 Tasks Completed:
 
-Member 2: 
-Tasks Given:
-Tasks Completed:
+Kofi Boateng: 
+Tasks Given: Employee menu, redeem points, give points
+Tasks Completed: Employee menu, redeem points, give points
 
 Member 3: 
 Tasks Given:
