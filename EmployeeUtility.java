@@ -15,6 +15,16 @@ public class EmployeeUtility {
 		 }
 		return isPresent;
 	}
+	public static boolean validateManagerUsername(List<Manager> list, String username) {
+		boolean isPresent = false;
+		 for(Manager e:list) {
+			 if(e.getUsername() == username) {
+				 isPresent = true;
+				 break;
+			 }		 
+		 }
+		return isPresent;
+	}
 
 	public static boolean validateEmployeeCredentials(List<Employee> list, String username, String password) {
 		boolean isPresent = false;
