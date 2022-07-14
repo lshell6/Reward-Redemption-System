@@ -73,7 +73,6 @@ public class EmployeeLogin {
 					String name = sc.next();
 					System.out.println("Enter username");
 					username = sc.next();
-					// check if username is taken // else create new employee
 					isValid = EmployeeUtility.validateEmployeeUsername(db.fetchEmployees(),username);
 					if(!isValid) { // if not valid, username does not exist
 						System.out.println("Enter password");
