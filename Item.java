@@ -2,17 +2,17 @@ package com.main;
 
 public class Item {
 	private int id;
-	private String name;
+	private String Name;
 	private int ptValue;
 	
 	Item(){
 		super();
 	}
 	
-	Item(int id, String name, int ptValue){
+	Item(int id, String Name, int ptValue){
 		super();
 		this.id = id;
-		this.name = name;
+		this.Name = Name;
 		this.ptValue = ptValue;
 	}
 
@@ -25,11 +25,11 @@ public class Item {
 	}
 
 	public String getName() {
-		return name;
+		return Name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String Name) {
+		this.Name = Name;
 	}
 
 	public int getPtValue() {
@@ -42,6 +42,6 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", ptValue=" + ptValue + "]";
+		return "Item [id=" + id + ", Name=" + Name + ", ptValue=" + ptValue + "]";
 	}
 }

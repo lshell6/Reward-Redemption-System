@@ -5,20 +5,20 @@ import java.util.List;
 
 public class EmployeeUtility {
 	
-	public static boolean validateEmployeeUsername(List<Employee> list, String username) {
+	public static boolean validateEmployeeUsername(List<Employee> list, String Username) {
 		boolean isPresent = false;
 		 for(Employee e:list) {
-			 if(e.getUsername().equals(username)) {
+			 if(e.getUsername().equals(Username)) {
 				 isPresent = true;
 				 break;
 			 }		 
 		 }
 		return isPresent;
 	}
-	public static boolean validateManagerUsername(List<Manager> list, String username) {
+	public static boolean validateManagerUsername(List<Manager> list, String Username) {
 		boolean isPresent = false;
 		 for(Manager e:list) {
-			 if(e.getUsername() == username) {
+			 if(e.getUsername().equals(Username)) {
 				 isPresent = true;
 				 break;
 			 }		 
@@ -26,11 +26,11 @@ public class EmployeeUtility {
 		return isPresent;
 	}
 
-	public static boolean validateEmployeeCredentials(List<Employee> list, String username, String password) {
+	public static boolean validateEmployeeCredentials(List<Employee> list, String Username, String Password) {
 		boolean isPresent = false;
 		for(Employee e: list) {
-			if(e.getUsername().equals(username)) {
-				if(e.getPassword().equals(password)) {
+			if(e.getUsername().equals(Username)) {
+				if(e.getPassword().equals(Password)) {
 					isPresent = true;
 					break;
 				}
@@ -39,11 +39,11 @@ public class EmployeeUtility {
 		return isPresent;
 	}
 	
-	public static boolean validateManagerCredentials(List<Manager> list, String username, String password) {
+	public static boolean validateManagerCredentials(List<Manager> list, String Username, String Password) {
 		boolean isPresent = false;
 		for(Manager m: list) {
-			if(m.getUsername().equals(username)) {
-				if(m.getPassword().equals(password)) {
+			if(m.getUsername().equals(Username)) {
+				if(m.getPassword().equals(Password)) {
 					isPresent = true;
 					break;
 				}
