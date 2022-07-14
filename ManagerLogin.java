@@ -93,16 +93,21 @@ public class ManagerLogin {
 					System.out.println("Enter username");
 					username = sc.next();
 					// check if username is taken // else create new manager
-					System.out.println("Enter password");
-					password = sc.nextLine();		
-					// once user input is complete store the new account into the data base.
-					Manager newMan = new Manager();
-					newMan.setName(name);
-					newMan.setUsername(username);
-					newMan.setPassword(password);
-					
-					db.insertManager(newMan);
-					
+					isValid = EmployeeUtility.validateManagerUsername(db.fetchManager(),username);
+					if(!isValid) { // if not valid, username does not exist
+						System.out.println("Enter password");
+						password = sc.nextLine();		
+						// once user input is complete store the new account into the data base.
+						Manager newMan = new Manager();
+						newMan.setName(name);
+						newMan.setUsername(username);
+						newMan.setPassword(password);
+						
+						db.insertManager(newMan);
+					}
+					else {
+						System.out.println("Username is taken, try again.");
+					}
 					break;
 				default:
 					break;
