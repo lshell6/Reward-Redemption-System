@@ -8,7 +8,7 @@ public class EmployeeUtility {
 	public static boolean validateEmployeeUsername(List<Employee> list, String username) {
 		boolean isPresent = false;
 		 for(Employee e:list) {
-			 if(e.getUsername() == username) {
+			 if(e.getUsername().equals(username)) {
 				 isPresent = true;
 				 break;
 			 }		 
@@ -29,8 +29,8 @@ public class EmployeeUtility {
 	public static boolean validateEmployeeCredentials(List<Employee> list, String username, String password) {
 		boolean isPresent = false;
 		for(Employee e: list) {
-			if(e.getUsername() == username) {
-				if(e.getPassword() == password) {
+			if(e.getUsername().equals(username)) {
+				if(e.getPassword().equals(password)) {
 					isPresent = true;
 					break;
 				}
@@ -42,8 +42,8 @@ public class EmployeeUtility {
 	public static boolean validateManagerCredentials(List<Manager> list, String username, String password) {
 		boolean isPresent = false;
 		for(Manager m: list) {
-			if(m.getUsername() == username) {
-				if(m.getPassword() == password) {
+			if(m.getUsername().equals(username)) {
+				if(m.getPassword().equals(password)) {
 					isPresent = true;
 					break;
 				}
