@@ -1,6 +1,5 @@
 # Reward-Redemption-System
-
-Git Link: https://github.com/lshell6/Reward-Redemption-System
+----- README -----
 
 1. Members and Tasks
 
