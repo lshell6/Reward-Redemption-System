@@ -22,9 +22,6 @@ Tasks Completed:
 2. Future Scope
 
 
-
-
-
 Google Docs link: https://docs.google.com/document/d/1Gv4wonKSqHxOfUuc6N5KSB25PTFb4_BZ-p-_Sr9YS7I/
 
 
