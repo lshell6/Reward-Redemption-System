@@ -1,30 +1,17 @@
--- MySQL Workbench Forward Engineering
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `hex_maverick_75572_db` DEFAULT CHARACTER SET utf8 ;
+USE `hex_maverick_75572_db` ;
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
 
--- -----------------------------------------------------
--- Table `mydb`.`employee`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`employee` (`Employee_ID` INT PRIMARY KEY AUTO_INCREMENT,
-  `Username` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`employee` (`Employee_ID` INT PRIMARY KEY AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `Username` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(45) NULL DEFAULT NULL,
   `Curr_Points` INT NULL DEFAULT NULL,
   `Total_Ponts` INT NULL DEFAULT NULL);
 
 
--- -----------------------------------------------------
--- Table `mydb`.`items`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`items` (
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`items` (
   `Item_ID` VARCHAR(45) NOT NULL,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
   `PtValue` INT NULL DEFAULT NULL,
@@ -33,19 +20,13 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`employee_has_items`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`employee_has_items` (
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`employee_has_items` (
   `Employee_Employee_ID` VARCHAR(45) NOT NULL,
-  `Items_Item_ID` VARCHAR(45) NOT NULL)
-  `Quantity` INT DEFAULT 0;
+  `Items_Item_ID` VARCHAR(45) NOT NULL);
+show tables;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`manager`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`manager` (
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`manager` (
   `Manager_ID` INT AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
   `Username` VARCHAR(45) NULL DEFAULT NULL,
@@ -55,19 +36,13 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`gives_pts`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`gives_pts` (
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`gives_pts` (
   `Manager_Manager_ID` VARCHAR(45) NOT NULL,
   `Employee_Employee_ID` VARCHAR(45) NOT NULL,
   `Points` INT NULL DEFAULT 0);
 
 
--- -----------------------------------------------------
--- Table `mydb`.`transaction`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`transaction` (
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`transaction` (
   `Transaction_ID` VARCHAR(45) PRIMARY KEY NOT NULL,
   `NumOfItems` INT NOT NULL,
   `Point_Cost` INT NOT NULL,
@@ -75,3 +50,4 @@ CREATE TABLE IF NOT EXISTS `mydb`.`transaction` (
 
 
  show tables;
+ select * from employee;
