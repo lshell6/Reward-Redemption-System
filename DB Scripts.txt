@@ -17,24 +17,24 @@ insert into Manager(name, username, password) values
 );
 
 
-insert into Employee(Username, Name, Password, Curr_Points, Total_Points) values
+insert into Employee(Name, Username, Password, Curr_Points, Total_Points) values
 (
-"58473",
 "Josh",
+"58473",
 "pass123",
 1200,
 20000
 ),
 (
-"857383",
 "Jeremy",
+"857383",
 "word5678",
 56,
 2000
 ),
 (
-"38565",
 "Destiny",
+"38565",
 "hi9999",
 700,
 700
@@ -54,7 +54,7 @@ insert into Items(name, PtValue) values
 750
 );
 
-insert into transaction (NumOfItems, Point_Cost, Employee_ID) values
+insert into transaction (NumOfItems, Point_Cost, Employee_Username) values
 (
 2,
 1000,
@@ -71,7 +71,7 @@ insert into transaction (NumOfItems, Point_Cost, Employee_ID) values
 38565
 );
   
-    insert into gives_pts (Manager_ID, Employee_ID, NumOfPts) values
+    insert into gives_pts (Manager_Manager_Username, Employee_Employee_Username, NumOfPts) values
     (
     12345,
     38565,
@@ -89,23 +89,23 @@ insert into transaction (NumOfItems, Point_Cost, Employee_ID) values
     );
     
     
-    insert into employee_has_items(Employee_Employee_ID, Items_Item_ID, Quantity) values
+    insert into employee_has_items(Employee_Employee_Username, Items_Item_ID, Quantity) values
     (
-    2,
+    38565,
     2,
     1
     );
     
-    insert into employee_has_items(Employee_Employee_ID, Items_Item_ID, Quantity) values
+    insert into employee_has_items(Employee_Employee_Username, Items_Item_ID, Quantity) values
     (
-    3,
+    857383,
     1,
     3
     );
     
-    insert into employee_has_items(Employee_Employee_ID, Items_Item_ID, Quantity) values
+    insert into employee_has_items(Employee_Employee_Username, Items_Item_ID, Quantity) values
     (
-    1,
+    58473,
     3,
     1
     );
