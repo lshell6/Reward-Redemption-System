@@ -22,7 +22,7 @@ Connection con;
 			e.printStackTrace();
 		}
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mavericks_hex", "root", "Password123");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Password123");
 			System.out.println("Connection Established!");
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -131,6 +131,29 @@ Connection con;
 	public List<Employee> fetchEmployees() throws SQLException{
 		dbConnect();
 		String sql = "select * from employee";
+		List<Employee> list = new ArrayList();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery();
+			
+			while(rst.next()) {
+				list.add(new Employee(rst.getInt("id"),
+						rst.getString("name"),
+						rst.getString("username"),
+						rst.getString("password"),
+						rst.getInt("currPts"),
+						rst.getInt("totalPts")));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+		return list;
+	}
+	
+	public List<Employee> fetchEmployeeIdNameUsername() throws SQLException{
+		dbConnect();
+		String sql = "select col1,col2,col3 from employee";
 		List<Employee> list = new ArrayList();
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);

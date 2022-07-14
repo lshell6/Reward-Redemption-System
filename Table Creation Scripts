@@ -1,0 +1,53 @@
+
+CREATE SCHEMA IF NOT EXISTS `hex_maverick_75572_db` DEFAULT CHARACTER SET utf8 ;
+USE `hex_maverick_75572_db` ;
+
+
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`employee` (`Employee_ID` INT PRIMARY KEY AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `Username` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NULL DEFAULT NULL,
+  `Curr_Points` INT NULL DEFAULT NULL,
+  `Total_Points` INT NULL DEFAULT NULL);
+
+
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`items` (
+  `Item_ID` VARCHAR(45) NOT NULL,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `PtValue` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`Item_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`manager` (
+  `Manager_ID` INT AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `Username` VARCHAR(45) NULL DEFAULT NULL,
+  `Password` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`Manager_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`gives_pts` (
+  `Manager_Manager_Username` VARCHAR(45) NOT NULL,
+  `Employee_Employee_Username` VARCHAR(45) NOT NULL,
+  `Points` INT NULL DEFAULT 0);
+
+
+CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`transaction` (
+  `Transaction_ID` INT PRIMARY KEY AUTO_INCREMENT,
+  `NumOfItems` INT NOT NULL,
+  `Point_Cost` INT NOT NULL,
+  `Employee_Username` VARCHAR(45) NOT NULL);
+  drop table transaction;
+  
+  CREATE TABLE IF NOT EXISTS `hex_maverick_75572_db`.`employee_has_items` (
+  `Employee_Employee_Username` VARCHAR(45) NOT NULL,
+  `Items_Item_ID` VARCHAR(45) NOT NULL,
+  `Quantity` INT DEFAULT 0);
+
+
+ show tables;
+ select * from employee;

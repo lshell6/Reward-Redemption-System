@@ -1,6 +1,8 @@
 package com.main;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GivePts {
@@ -46,8 +48,15 @@ public class GivePts {
 	
 	
 	// -------- kyung's code --------
-	public void awardPoints() {
+	public void awardPoints() throws SQLException {
 		while(true) { // ask manager for username of employee and validate username
+			
+			//show a list of employees
+			List<Employee> emp = db.fetchEmployeeIdNameUsername();
+			for (Employee e : emp) {
+				System.out.println(e);
+			}
+			
 			System.out.println("Enter the employee's username: ");
 			String username = sc.next();
 			boolean isValid = false;
