@@ -92,7 +92,6 @@ public class ManagerLogin {
 					String name = sc.next();
 					System.out.println("Enter username");
 					username = sc.next();
-					// check if username is taken // else create new manager
 					isValid = EmployeeUtility.validateManagerUsername(db.fetchManager(),username);
 					if(!isValid) { // if not valid, username does not exist
 						System.out.println("Enter password");
