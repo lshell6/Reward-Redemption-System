@@ -2,19 +2,19 @@ package com.main;
 
 public class Manager {
 	private int id;
-	private String name;
-	private String username;
-	private String password;
+	private String Name;
+	private String Username;
+	private String Password;
 	
 	public Manager(){
 		super();
 	}
-	public Manager(int id, String name, String username, String password) {
+	public Manager(int id, String Name, String Username, String Password) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.username = username;
-		this.password = password;
+		this.Name = Name;
+		this.Username = Username;
+		this.Password = Password;
 	}
 	public int getId() {
 		return id;
@@ -23,22 +23,22 @@ public class Manager {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return Name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String Name) {
+		this.Name = Name;
 	}
 	public String getUsername() {
-		return username;
+		return Username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String Username) {
+		this.Username = Username;
 	}
 	public String getPassword() {
-		return password;
+		return Password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String Password) {
+		this.Password = Password;
 	}
 	
 	

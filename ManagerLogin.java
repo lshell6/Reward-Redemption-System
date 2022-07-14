@@ -27,12 +27,12 @@ public class ManagerLogin {
 			switch(input) {
 				case 1:
 					System.out.println("***** Login *****");
-					System.out.println("Enter username");
-					String username = sc.next();
-					System.out.println("Enter password");
-					String password = sc.nextLine();
-					// validate username
-					 boolean isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),username, password);
+					System.out.println("Enter Username");
+					String Username = sc.next();
+					System.out.println("Enter Password");
+					String Password = sc.nextLine();
+					// validate Username
+					 boolean isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),Username, Password);
 					 if(!isValid) {
 					 System.out.println("Invalid Credentials, Try Again!");
 					 	break;
@@ -63,22 +63,22 @@ public class ManagerLogin {
 						
 				case 2: 
 					System.out.println("***** Change Password *****");
-					System.out.println("Enter username");
-					username = sc.next();
-					System.out.println("Enter current password");
-					password = sc.nextLine();
-					// call isValid to validate manager username
-					isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),username,password);
+					System.out.println("Enter Username");
+					Username = sc.next();
+					System.out.println("Enter Curr_ent Password");
+					Password = sc.nextLine();
+					// call isValid to validate manager Username
+					isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),Username,Password);
 					if(!isValid) {
 						System.out.println("Invalid Credentials, Try Again!");
 					break;
 					}
-					// Prompt user to enter new password (maybe confirm the new password?)
-					// after input update new password
-					Manager man = db.fetchManager(username);
-					System.out.println("Enter new password");
+					// Prompt user to enter new Password (maybe confirm the new Password?)
+					// after input update new Password
+					Manager man = db.fetchManager(Username);
+					System.out.println("Enter new Password");
 					String newPassword = sc.nextLine();
-					System.out.println("Confirm new password");
+					System.out.println("Confirm new Password");
 					String newPasswordConfirm = sc.nextLine();
 					if(newPassword.equals(newPasswordConfirm)) {
 						manager.setPassword(newPassword);
@@ -88,21 +88,25 @@ public class ManagerLogin {
 						System.out.println("Passwords do not match.");
 					}
 				case 3: 
-					System.out.println("Enter name");
-					String name = sc.next();
-					System.out.println("Enter username");
-					username = sc.next();
-					// check if username is taken // else create new manager
-					System.out.println("Enter password");
-					password = sc.nextLine();		
-					// once user input is complete store the new account into the data base.
-					Manager newMan = new Manager();
-					newMan.setName(name);
-					newMan.setUsername(username);
-					newMan.setPassword(password);
-					
-					db.insertManager(newMan);
-					
+					System.out.println("Enter Name");
+					String Name = sc.next();
+					System.out.println("Enter Username");
+					Username = sc.next();
+					isValid = EmployeeUtility.validateManagerUsername(db.fetchManager(),Username);
+					if(!isValid) { // if not valid, Username does not exist
+						System.out.println("Enter Password");
+						Password = sc.nextLine();		
+						// once user input is complete store the new account into the data base.
+						Manager newMan = new Manager();
+						newMan.setName(Name);
+						newMan.setUsername(Username);
+						newMan.setPassword(Password);
+						
+						db.insertManager(newMan);
+					}
+					else {
+						System.out.println("Username is taken, try again.");
+					}
 					break;
 				default:
 					break;

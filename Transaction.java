@@ -3,7 +3,7 @@ package com.main;
 public class Transaction {
 	private int id;
 	private int numOfItems;
-	private int totalPtValue;
+	private int Total_PtValue;
 	
 	public int getId() {
 		return id;
@@ -17,11 +17,11 @@ public class Transaction {
 	public void setNumOfItems(int numOfItems) {
 		this.numOfItems = numOfItems;
 	}
-	public int getTotalPtValue() {
-		return totalPtValue;
+	public int getTotal_PtValue() {
+		return Total_PtValue;
 	}
-	public void setTotalPtValue(int totalPtValue) {
-		this.totalPtValue = totalPtValue;
+	public void setTotal_PtValue(int Total_PtValue) {
+		this.Total_PtValue = Total_PtValue;
 	}
 	
 }

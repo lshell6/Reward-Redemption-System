@@ -6,42 +6,42 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GivePts {
-	private int numOfPts;
-	private int totPts;
+	private int numOfPoints;
+	private int totPoints;
 	Manager m = new Manager();
 	Employee e = new Employee();
 	
 	DB db = new DB();
 	Scanner sc = new Scanner(System.in);
 
-	public int getTotPts() {
-		return totPts;
+	public int getTotPoints() {
+		return totPoints;
 	}
 
-	public void setTotPts(int totPts) {
-		this.totPts = totPts;
+	public void setTotPoints(int totPoints) {
+		this.totPoints = totPoints;
 	}
 
-	public int getNumOfPts() {
-		return numOfPts;
+	public int getNumOfPoints() {
+		return numOfPoints;
 	}
 
-	public void setNumOfPts(int numOfPts) {
-		this.numOfPts = numOfPts;
+	public void setNumOfPoints(int numOfPoints) {
+		this.numOfPoints = numOfPoints;
 	}
 		
 		
-	public int calcPts(int earnedPts) {
-			numOfPts = e.getCurrPts();
-			totPts = numOfPts + earnedPts;
-			return totPts;
+	public int calcPoints(int earnedPoints) {
+			numOfPoints = e.getCurr_Points();
+			totPoints = numOfPoints + earnedPoints;
+			return totPoints;
 		}
 		
 	public GivePts() {
 		int mID = m.getId();
 		int eID = e.getId();
-		e.setCurrPts(totPts);
-		e.setTotalPts(totPts);
+		e.setCurr_Points(totPoints);
+		e.setTotal_Points(totPoints);
 	}
 	
 	
@@ -49,7 +49,7 @@ public class GivePts {
 	
 	// -------- kyung's code --------
 	public void awardPoints() throws SQLException {
-		while(true) { // ask manager for username of employee and validate username
+		while(true) { // ask manager for Username of employee and validate Username
 			
 			//show a list of employees
 			List<Employee> emp = db.fetchEmployeeIdNameUsername();
@@ -57,11 +57,11 @@ public class GivePts {
 				System.out.println(e);
 			}
 			
-			System.out.println("Enter the employee's username: ");
-			String username = sc.next();
+			System.out.println("Enter the employee's Username: ");
+			String Username = sc.next();
 			boolean isValid = false;
 			try {
-				isValid = EmployeeUtility.validateEmployeeUsername(db.fetchEmployees(),username);
+				isValid = EmployeeUtility.validateEmployeeUsername(db.fetchEmployees(),Username);
 			} catch (SQLException e) {			
 				e.printStackTrace();
 			}
@@ -71,19 +71,19 @@ public class GivePts {
 			 }
 				System.out.println("Enter the amount of points you would like to give: ");
 				int points = sc.nextInt();
-				e = db.fetchEmployee(username);
-				int newCurrPts = e.getCurrPts() + points;
-				int newTotPts = e.getTotalPts() + points;
-				e.setCurrPts(newCurrPts);
-				e.setTotalPts(newTotPts);
+				e = db.fetchEmployee(Username);
+				int newCurr_Points = e.getCurr_Points() + points;
+				int newTotPoints = e.getTotal_Points() + points;
+				e.setCurr_Points(newCurr_Points);
+				e.setTotal_Points(newTotPoints);
 				
 				try {
-					db.updateEmployeeCurrentPoints(e);
+					db.updateEmployeeCurr_entPoints(e);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 				try {
-					db.updateEmployeeTotalPoints(e);
+					db.updateEmployeeTotal_Points(e);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
