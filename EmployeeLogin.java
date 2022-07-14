@@ -74,17 +74,23 @@ public class EmployeeLogin {
 					System.out.println("Enter username");
 					username = sc.next();
 					// check if username is taken // else create new employee
-					System.out.println("Enter password");
-					password = sc.nextLine();		
-					// once user input is complete store the new account into the data base.
-					Employee newEmp = new Employee();
-					newEmp.setName(name);
-					newEmp.setUsername(username);
-					newEmp.setPassword(password);
-					newEmp.setCurrPts(0);
-					newEmp.setTotalPts(0);
-					
-					db.insertEmployee(newEmp);
+					isValid = EmployeeUtility.validateEmployeeUsername(db.fetchEmployees(),username);
+					if(!isValid) { // if not valid, username does not exist
+						System.out.println("Enter password");
+						password = sc.nextLine();		
+						// once user input is complete store the new account into the data base.
+						Employee newEmp = new Employee();
+						newEmp.setName(name);
+						newEmp.setUsername(username);
+						newEmp.setPassword(password);
+						newEmp.setCurrPts(0);
+						newEmp.setTotalPts(0);
+						
+						db.insertEmployee(newEmp);
+					}
+					else {
+						System.out.println("Username is taken, try again.");
+					}
 					
 					break;
 				default:
