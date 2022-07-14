@@ -22,7 +22,7 @@ Connection con;
 			e.printStackTrace();
 		}
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hex_maverick_75572_db", "root", "Password123");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Password123");
 			System.out.println("Connection Established!");
 		}catch(SQLException e) {
 			e.printStackTrace();
