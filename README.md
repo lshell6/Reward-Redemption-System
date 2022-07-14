@@ -1,5 +1,7 @@
 # Reward-Redemption-System
 
+Git Link: https://github.com/lshell6/Reward-Redemption-System
+
 1. Members and Tasks
 
 Kyung Joo: 
