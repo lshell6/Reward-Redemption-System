@@ -64,6 +64,7 @@ public class EmployeeLogin {
 					if(newPassword.equals(newPasswordConfirm)) {
 						employee.setPassword(newPassword);
 						db.updateEmployeePassword(employee);
+						System.out.println("Password has been updated!");
 					}
 					else {
 						System.out.println("Passwords do not match.");

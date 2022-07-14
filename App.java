@@ -14,6 +14,7 @@ public class App {
 			System.out.println("1. Employee Login");
 			System.out.println("2. Manager Login");
 			System.out.println("0. Exit");
+			System.out.println("Enter your input: ");
 			int input = sc.nextInt();
 			if(input == 0) {
 				System.out.println("Exiting... Bye!");
