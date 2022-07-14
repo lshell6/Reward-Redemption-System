@@ -17,7 +17,7 @@ insert into Manager(name, username, password) values
 );
 
 
-insert into Employee(Username, Name, Password, Curr_Points, Total_Points, name) values
+insert into Employee(Username, Name, Password, Curr_Points, Total_Points) values
 (
 "58473",
 "Josh",
