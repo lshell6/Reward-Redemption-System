@@ -11,7 +11,6 @@ public class ManagerLogin {
 		Manager manager = new Manager(); 
 		
 		while(true) {
-			// show menu to user
 			Scanner sc = new Scanner(System.in);
 			System.out.println("*****Manager Login*****");
 			System.out.println("1. Login");
@@ -20,23 +19,18 @@ public class ManagerLogin {
 			System.out.println("0. Exit");
 			System.out.println("Enter your input: ");
 			int input = sc.nextInt();
-			if(input > 3) { // input validation
+			if(input > 3) {
 				while(input>3 && input!=0) {
 					System.out.println("That is not an option please try again");
 					System.out.println("Enter your input: ");
 					input = sc.nextInt();
 				}
 			}
-			else if(input == 0) { 
+			else if(input == 0) {
 				System.out.println("Successfully logged out.");
 				break; 
 			}
-			/*
-			case 1: Login
-			case 2: Change Password
-			case 3: Register
-			default: break;
-			*/
+			
 			switch(input) {
 				case 1:
 					System.out.println("***** Login *****");
@@ -50,9 +44,9 @@ public class ManagerLogin {
 					 System.out.println("Invalid Credentials, Try Again!");
 					 	break;
 					 }
-					 
+					 manager = db.fetchManager(Username);
 					System.out.println("Login Successful!");
-					 // show new menu for managers
+					 // IMPLEMENT NEW MENU FOR MANAGERS
 					while(true) {
 						System.out.println("*****Manager Portal*****");
 						System.out.println("Welcome " + manager.getName() + "!");
@@ -65,11 +59,7 @@ public class ManagerLogin {
 							System.out.println("Exiting..");
 							break; 
 						}
-						/*
-						case 1: give points to employee
-						default: break;
-						*/
-						switch(input) { 
+						switch(input) {
 							case 1: 
 								GivePts gp = new GivePts();
 								gp.awardPoints();
