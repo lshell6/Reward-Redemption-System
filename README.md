@@ -41,7 +41,8 @@ Tasks Given:
 - Transaction Class
 - Created and updated DB class
 - EERD and schema
-- Testing/Troubleshooting
+- Testing/Troubleshooting/Fixing
+
 
 Tasks Completed:
 - Employee Class
@@ -50,14 +51,17 @@ Tasks Completed:
 - Transaction Class
 - Created and updated DB class
 - EERD and schema
-- Testing/Troubleshooting
+- Testing/Troubleshooting/Fixing
 
-Member 4: 
+Maryam Ali: 
 
 Tasks Given:
+-  DB insertion scripts
+-  Updated manager login
 
 Tasks Completed:
-
+-  DB insertion scripts
+-  Updated manager login
 
 2. Future Scope
 
