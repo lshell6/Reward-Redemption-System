@@ -87,6 +87,8 @@ public class GivePts {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				System.out.println("Successfully gave employee " + e.getUsername() 
+									+ " " + points + " points!");
 				break;
 		}
 

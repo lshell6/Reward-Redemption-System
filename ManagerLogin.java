@@ -16,7 +16,7 @@ public class ManagerLogin {
 			System.out.println("1. Login");
 			System.out.println("2. Change Password");
 			System.out.println("3. Register");
-			System.out.println("0. To Exit");
+			System.out.println("0. Exit");
 			System.out.println("Enter your input: ");
 			int input = sc.nextInt();
 			if(input > 3) {
@@ -27,7 +27,7 @@ public class ManagerLogin {
 				}
 			}
 			else if(input == 0) {
-				System.out.println("Exiting.. Bye!!");
+				System.out.println("Successfully logged out.");
 				break; 
 			}
 			
@@ -49,8 +49,10 @@ public class ManagerLogin {
 					 // IMPLEMENT NEW MENU FOR MANAGERS
 					while(true) {
 						System.out.println("*****Manager Portal*****");
+						System.out.println("Welcome " + manager.getName() + "!");
+						System.out.println();
 						System.out.println("1. Give Points to Employee");
-						System.out.println("0. To Exit");
+						System.out.println("0. Logout");
 						System.out.println("Enter your input: ");
 						input = sc.nextInt();
 						if(input == 0) {

@@ -17,6 +17,8 @@ public class EmployeeMenu {
 			Scanner sc = new Scanner(System.in);
 			int pts;
 			System.out.println("*****Employee Menu (" + username + ")*****");
+			System.out.println("Welcome " + e.getName() + "!");
+			System.out.println();
 			System.out.println("1. Redeem points");
 			System.out.println("2. View current points");
 			System.out.println("0. Logout");
@@ -48,11 +50,12 @@ public class EmployeeMenu {
 						break;
 					}
 					List<Item> cart = new ArrayList<>();
+					int ptsRemain = curPts - cost;
 					cart.add(count, item);
-					System.out.println("Item added to cart. Add another item?(Y/N)");
+					System.out.println("Item added to cart. Remaining points = " + ptsRemain + "\nAdd another item?(Y/N)");
 					String inputC = sc.next();
+					count++;
 					while (inputC.equalsIgnoreCase("y")) {
-						count++;
 						System.out.println("Please select another item");
 						for (Item i : items) {
 							System.out.println(i);
@@ -72,7 +75,8 @@ public class EmployeeMenu {
 							break;
 						}else {
 							cart.add(count,item);
-							System.out.println("Item added to cart. Add another item?(Y/N)");
+							count++;
+							System.out.println("Item added to cart. Remaining points = " + ptsRemain +  "\nAdd another item?(Y/N)");
 						}
 						inputC = sc.next();
 					}
