@@ -66,18 +66,25 @@ public class EmployeeMenu {
 							System.out.println("Invalid selection, try again.");
 							break;
 						} else if (curPts < cost) {
-							System.out.println("Insufficient funds.");
+							System.out.println("Insufficient funds. Emptying cart");
+							cart = new ArrayList<>();
+							count = 0;
 							break;
+						}else {
+							cart.add(count,item);
+							System.out.println("Item added to cart. Add another item?(Y/N)");
 						}
-						cart.add(count,item);
-						System.out.println("Item added to cart. Add another item?(Y/N)");
 						inputC = sc.next();
 					}
-					Redeem redeem = new Redeem();
-					curPts = redeem.Checkout(cost, e.getCurr_Points(), cart);
-					e.setCurr_Points(curPts);
-					pts = curPts;
-					System.out.println("Item(s) redeemed.");
+					if(count>0) {
+						Redeem redeem = new Redeem();
+						curPts = redeem.Checkout(cost, e.getCurr_Points(), cart);
+						e.setCurr_Points(curPts);
+						pts = curPts;
+						db.updateEmployeeCurrentPoints(e);
+						db.updateEmployeeTotalPoints(e);
+					}
+					System.out.println(count + " Item(s) redeemed.");
 					break;
 				}
 			case 2:

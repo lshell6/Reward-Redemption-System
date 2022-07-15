@@ -19,7 +19,14 @@ public class ManagerLogin {
 			System.out.println("0. To Exit");
 			System.out.println("Enter your input: ");
 			int input = sc.nextInt();
-			if(input == 0) {
+			if(input > 3) {
+				while(input>3 && input!=0) {
+					System.out.println("That is not an option please try again");
+					System.out.println("Enter your input: ");
+					input = sc.nextInt();
+				}
+			}
+			else if(input == 0) {
 				System.out.println("Exiting.. Bye!!");
 				break; 
 			}
