@@ -11,6 +11,7 @@ public class ManagerLogin {
 		Manager manager = new Manager(); 
 		
 		while(true) {
+			// show menu to user
 			Scanner sc = new Scanner(System.in);
 			System.out.println("*****Manager Login*****");
 			System.out.println("1. Login");
@@ -19,18 +20,23 @@ public class ManagerLogin {
 			System.out.println("0. Exit");
 			System.out.println("Enter your input: ");
 			int input = sc.nextInt();
-			if(input > 3) {
+			if(input > 3) { // input validation
 				while(input>3 && input!=0) {
 					System.out.println("That is not an option please try again");
 					System.out.println("Enter your input: ");
 					input = sc.nextInt();
 				}
 			}
-			else if(input == 0) {
+			else if(input == 0) { 
 				System.out.println("Successfully logged out.");
 				break; 
 			}
-			
+			/*
+			case 1: Login
+			case 2: Change Password
+			case 3: Register
+			default: break;
+			*/
 			switch(input) {
 				case 1:
 					System.out.println("***** Login *****");
@@ -46,7 +52,7 @@ public class ManagerLogin {
 					 }
 					 
 					System.out.println("Login Successful!");
-					 // IMPLEMENT NEW MENU FOR MANAGERS
+					 // show new menu for managers
 					while(true) {
 						System.out.println("*****Manager Portal*****");
 						System.out.println("Welcome " + manager.getName() + "!");
@@ -59,7 +65,11 @@ public class ManagerLogin {
 							System.out.println("Exiting..");
 							break; 
 						}
-						switch(input) {
+						/*
+						case 1: give points to employee
+						default: break;
+						*/
+						switch(input) { 
 							case 1: 
 								GivePts gp = new GivePts();
 								gp.awardPoints();
