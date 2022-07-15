@@ -10,6 +10,7 @@ Tasks Given:
 - EmployeeUtility
 - Updated DB
 - GivePts functionality
+- Assist in troubleshooting
 
 Tasks Completed:
 - EmployeeLogin
@@ -17,6 +18,7 @@ Tasks Completed:
 - Updated DB
 - GivePts functionality
 - ManagerLogin
+- Assist in troubleshooting
 
 Kofi Boateng: 
 
@@ -40,7 +42,7 @@ Tasks Given:
 - Updated DB class
 - EERD and schema
 - Testing/Troubleshooting
--
+
 Tasks Completed:
 - Employee Class
 - Manager Class
