@@ -12,6 +12,7 @@ public class EmployeeLogin {
 		Employee employee = new Employee(); 
 		
 		while(true) {
+			// Menu option
 			Scanner sc = new Scanner(System.in);
 			System.out.println("*****Employee Login*****");
 			System.out.println("1. Login");
@@ -27,11 +28,16 @@ public class EmployeeLogin {
 					input = sc.nextInt();
 				}
 			}
-			else if(input == 0) {
+			else if(input == 0) { // execute if user inputs 0 -> goes back to App homepage
 				System.out.println("Exiting.. Bye!!");
 				break; 
 			}
-			
+			/*
+			case 1: Login
+			case 2: Change Password
+			case 3: Register
+			default: break;
+			*/
 			switch(input) {
 				case 1:
 					System.out.println("***** Login *****");
@@ -47,6 +53,7 @@ public class EmployeeLogin {
 					 }
 					 
 					 System.out.println("Login Successful!");
+					 // once login is validated initiate the employee menu
 					 EmployeeMenu empMenu = new EmployeeMenu();
 					 empMenu.EmpMenu(Username);
 					 break;
@@ -77,7 +84,7 @@ public class EmployeeLogin {
 						System.out.println("Passwords do not match.");
 					}
 					break;
-				case 3: 
+				case 3: // new user registration, validate username input is not already taken
 					System.out.println("Enter Name");
 					String Name = sc.next();
 					System.out.println("Enter Username");
