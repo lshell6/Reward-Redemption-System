@@ -52,7 +52,7 @@ public class GivePts {
 		while(true) { // ask manager for Username of employee and validate Username
 			
 			//show a list of employees
-			List<Employee> emp = db.fetchEmployeeIdNameUsername();
+			List<Employee> emp = db.fetchEmployees();
 			for (Employee e : emp) {
 				System.out.println(e);
 			}

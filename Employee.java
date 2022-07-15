@@ -21,6 +21,11 @@ public class Employee {
 		this.Total_Points = Total_Points;
 	}
 	
+	public Employee(int id, String Name, String Username) {
+		this.id = id;
+		this.Name = Name;
+		this.Username = Username;
+	}
 	public int getId() {
 		return id;
 	}
@@ -56,6 +61,10 @@ public class Employee {
 	}
 	public void setTotal_Points(int Total_Points) {
 		this.Total_Points = Total_Points;
+	}
+	@Override
+	public String toString() {
+		return "Employee [Name=" + Name + ", Username=" + Username + ", Current Points=" + Curr_Points + ", Total Points=" + Total_Points + "]";
 	}
 	
 	

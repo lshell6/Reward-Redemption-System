@@ -63,9 +63,10 @@ public class ManagerLogin {
 						
 				case 2: 
 					System.out.println("***** Change Password *****");
+					db.updateManager(manager);
 					System.out.println("Enter Username");
 					Username = sc.next();
-					System.out.println("Enter Curr_ent Password");
+					System.out.println("Enter Current Password");
 					Password = sc.next();
 					// call isValid to validate manager Username
 					isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),Username,Password);
@@ -82,11 +83,14 @@ public class ManagerLogin {
 					String newPasswordConfirm = sc.next();
 					if(newPassword.equals(newPasswordConfirm)) {
 						manager.setPassword(newPassword);
+						System.out.println(manager.getPassword());
 						db.updateManagerPassword(manager);
+						System.out.println(manager.getPassword());
 					}
 					else {
 						System.out.println("Passwords do not match.");
 					}
+					db.updateManager(manager);
 					break;
 				case 3: 
 					System.out.println("Enter Name");

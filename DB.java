@@ -17,13 +17,11 @@ Connection con;
 	public void dbConnect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("Driver loaded..");
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hex_maverick_75572_db", "root", "Password123");
-			System.out.println("Connection Established!");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,11 +69,31 @@ Connection con;
 	
 	public void updateManagerPassword(Manager manager) throws SQLException {
 		dbConnect();
-		String sql = "update manager set Password = ? where Manager_ID="+manager.getId();
+		String sql = "update manager SET Password = ? where Manager_ID=?";
+		System.out.println(manager.getPassword());
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, manager.getPassword());
+			pstmt.setInt(2, manager.getId());
 			pstmt.executeUpdate();
+			System.out.println("hey");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		dbClose();
+	}
+	
+	public void updateManager(Manager manager) throws SQLException{
+		dbConnect();
+		String sql = "update manager SET Name=?,Username=?,Password=? where Manager_ID=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, manager.getName());
+			pstmt.setString(2, manager.getUsername());
+			pstmt.setString(3, manager.getPassword());
+			pstmt.setInt(4, manager.getId());
+			pstmt.executeUpdate();
+			System.out.println("hi");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -88,7 +106,7 @@ Connection con;
 				+ "?" + " where Employee_ID = " + employee.getId();
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(5, employee.getCurr_Points());
+			pstmt.setInt(1, employee.getCurr_Points());
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -101,7 +119,7 @@ Connection con;
 				+ "?" + " where Employee_ID = " + employee.getId();
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(6, employee.getTotal_Points());
+			pstmt.setInt(1, employee.getTotal_Points());
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -147,7 +165,7 @@ Connection con;
 	
 	public List<Employee> fetchEmployeeIdNameUsername() throws SQLException{
 		dbConnect();
-		String sql = "select col1,col2,col3 from employee";
+		String sql = "select Employee_ID,Name,Username from employee";
 		List<Employee> list = new ArrayList<>();
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -156,10 +174,7 @@ Connection con;
 			while(rst.next()) {
 				list.add(new Employee(rst.getInt("Employee_ID"),
 						rst.getString("Name"),
-						rst.getString("Username"),
-						rst.getString("Password"),
-						rst.getInt("Curr_Points"),
-						rst.getInt("Total_Points")));
+						rst.getString("Username")));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
