@@ -65,9 +65,11 @@ Tasks Completed:
 
 2. Future Scope
 
--Cleaner UI
+- Clean up DB class, consolodate all updateEmployeeX & updateManagerX to just one updateEmployee & updateManager classes.
 
--Main issue to tackle: organization with merging using git
+- Cleaner UI
+
+- Main issue to tackle: organization with merging using git
 
   Possible solution: Using Interface class
 
