@@ -42,12 +42,13 @@ public class EmployeeLogin {
 					 System.out.println("Login Successful!");
 					 EmployeeMenu empMenu = new EmployeeMenu();
 					 empMenu.EmpMenu(Username);
+					 break;
 				case 2: 
 					System.out.println("***** Change Password *****");
 					System.out.println("Enter Username");
 					Username = sc.next();
-					System.out.println("Enter Curr_ent Password");
-					Password = sc.nextLine();
+					System.out.println("Enter Current Password");
+					Password = sc.next();
 					// call isValid to validate employee Username
 					isValid = EmployeeUtility.validateEmployeeCredentials(db.fetchEmployees(),Username,Password);
 					if(!isValid) {
@@ -58,9 +59,9 @@ public class EmployeeLogin {
 					// after input update new Password
 					Employee emp = db.fetchEmployee(Username);
 					System.out.println("Enter new Password");
-					String newPassword = sc.nextLine();
+					String newPassword = sc.next();
 					System.out.println("Confirm new Password");
-					String newPasswordConfirm = sc.nextLine();
+					String newPasswordConfirm = sc.next();
 					if(newPassword.equals(newPasswordConfirm)) {
 						employee.setPassword(newPassword);
 						db.updateEmployeePassword(employee);
@@ -68,6 +69,7 @@ public class EmployeeLogin {
 					else {
 						System.out.println("Passwords do not match.");
 					}
+					break;
 				case 3: 
 					System.out.println("Enter Name");
 					String Name = sc.next();
@@ -76,7 +78,7 @@ public class EmployeeLogin {
 					isValid = EmployeeUtility.validateEmployeeUsername(db.fetchEmployees(),Username);
 					if(!isValid) { // if not valid, Username does not exist
 						System.out.println("Enter Password");
-						Password = sc.nextLine();		
+						Password = sc.next();		
 						// once user input is complete store the new account into the data base.
 						Employee newEmp = new Employee();
 						newEmp.setName(Name);

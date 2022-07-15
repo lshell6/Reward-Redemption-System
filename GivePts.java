@@ -78,12 +78,12 @@ public class GivePts {
 				e.setTotal_Points(newTotPoints);
 				
 				try {
-					db.updateEmployeeCurr_entPoints(e);
+					db.updateEmployeeCurrentPoints(e);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 				try {
-					db.updateEmployeeTotal_Points(e);
+					db.updateEmployeeTotalPoints(e);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

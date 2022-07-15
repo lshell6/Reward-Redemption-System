@@ -2,7 +2,6 @@ package com.main;
 
 import com.main.Employee;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,7 +35,7 @@ public class EmployeeMenu {
 					input = sc.nextInt();
 					Item item = new Item();
 					int id = item.getId();
-					int curPts = emp.getCurrPts();
+					int curPts = emp.getCurr_Points();
 					int cost = item.getPtValue();
 					if (id != input) {
 						System.out.println("Invalid selection, try again.");
@@ -52,14 +51,14 @@ public class EmployeeMenu {
 						break;
 					}
 					Redeem redeem = new Redeem();
-					curPts = redeem.Checkout(cost, emp.getCurrPts(), cart);
-					emp.setCurrPts(curPts);
+					curPts = redeem.Checkout(cost, emp.getCurr_Points(), cart);
+					emp.setCurr_Points(curPts);
 					pts = curPts;
 					System.out.println("Item redeemed.");
 					break;
 				}
 			case 2:
-				pts = emp.getCurrPts();
+				pts = emp.getCurr_Points();
 				System.out.println("Current points: " + pts);
 				break;
 			default:
