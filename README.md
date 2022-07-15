@@ -30,11 +30,25 @@ Tasks Completed:
 - redeem points,
 - give points
 
-Member 3: 
+Laura Shelly: 
 
 Tasks Given:
-
+- Employee Class
+- Manager Class
+- Items Class
+- Transaction Class
+- Updated DB class
+- EERD and schema
+- Testing/Troubleshooting
+-
 Tasks Completed:
+- Employee Class
+- Manager Class
+- Items Class
+- Transaction Class
+- Updated DB class
+- EERD and schema
+- Testing/Troubleshooting
 
 Member 4: 
 
