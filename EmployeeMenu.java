@@ -2,6 +2,7 @@ package com.main;
 
 import com.main.Employee;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,8 @@ public class EmployeeMenu {
 		DB db = new DB();
 
 		while (true) {
-			Employee emp = new Employee();
+			Employee e = new Employee();
+			e = db.fetchEmployee(username);
 			Scanner sc = new Scanner(System.in);
 			int pts;
 			System.out.println("*****Employee Menu (" + username + ")*****");
@@ -31,35 +33,56 @@ public class EmployeeMenu {
 					for (Item i : items) {
 						System.out.println(i);
 					}
-					System.out.println("Select an item to redeem: ");
+					System.out.println("Select an item's id to redeem item: ");
 					input = sc.nextInt();
-					Item item = new Item();
-					int id = item.getId();
-					int curPts = emp.getCurr_Points();
+					int id = input;
+					Item item = db.selectItem(id);
+					int curPts = e.getCurr_Points();
 					int cost = item.getPtValue();
-					if (id != input) {
+					int count = 0;
+					if (id < 1 || id > 5) {
 						System.out.println("Invalid selection, try again.");
 						break;
 					} else if (curPts < cost) {
 						System.out.println("Insufficient funds.");
 						break;
 					}
-					List<Item> cart = db.selectItems();
+					List<Item> cart = new ArrayList<>();
+					cart.add(count, item);
 					System.out.println("Item added to cart. Add another item?(Y/N)");
 					String inputC = sc.next();
-					if (inputC.equals("Y") || inputC.equals("y")) {
-						break;
+					while (inputC.equalsIgnoreCase("y")) {
+						count++;
+						System.out.println("Please select another item");
+						for (Item i : items) {
+							System.out.println(i);
+						}
+						input = sc.nextInt();
+						id = input;
+						item = db.selectItem(id);
+						curPts = e.getCurr_Points();
+						cost = cost + item.getPtValue();
+						if (id < 1 || id > 5) {
+							System.out.println("Invalid selection, try again.");
+							break;
+						} else if (curPts < cost) {
+							System.out.println("Insufficient funds.");
+							break;
+						}
+						cart.add(count,item);
+						System.out.println("Item added to cart. Add another item?(Y/N)");
+						inputC = sc.next();
 					}
 					Redeem redeem = new Redeem();
-					curPts = redeem.Checkout(cost, emp.getCurr_Points(), cart);
-					emp.setCurr_Points(curPts);
+					curPts = redeem.Checkout(cost, e.getCurr_Points(), cart);
+					e.setCurr_Points(curPts);
 					pts = curPts;
-					System.out.println("Item redeemed.");
+					System.out.println("Item(s) redeemed.");
 					break;
 				}
 			case 2:
-				pts = emp.getCurr_Points();
-				System.out.println("Current points: " + pts);
+				pts = e.getCurr_Points();
+				System.out.println("Current points: " + e.getCurr_Points());
 				break;
 			default:
 				System.out.println("Invalid input");

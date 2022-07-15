@@ -42,8 +42,6 @@ public class EmployeeUtility {
 	public static boolean validateManagerCredentials(List<Manager> list, String Username, String Password) {
 		boolean isPresent = false;
 		for(Manager m: list) {
-			System.out.println(isPresent + " " + m.getUsername() + " "+ Username
-					+ " " + m.getPassword() + " " + Password);
 			if(m.getUsername().equals(Username)) {
 				if(m.getPassword().equals(Password)) {
 					isPresent = true;
@@ -51,7 +49,6 @@ public class EmployeeUtility {
 				}
 			}
 		}
-		System.out.println(isPresent);
 		return isPresent;
 	}
 }

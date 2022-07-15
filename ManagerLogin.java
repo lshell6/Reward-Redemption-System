@@ -31,8 +31,8 @@ public class ManagerLogin {
 					String Username = sc.next();
 					System.out.println("Enter Password");
 					String Password = sc.next();
-					// validate Username
-					 boolean isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),Username, Password);
+					// validate Username 
+					 boolean isValid = EmployeeUtility.validateManagerCredentials(db.fetchManagers(),Username, Password);
 					 if(!isValid) {
 					 System.out.println("Invalid Credentials, Try Again!");
 					 	break;
@@ -63,13 +63,12 @@ public class ManagerLogin {
 						
 				case 2: 
 					System.out.println("***** Change Password *****");
-					db.updateManager(manager);
 					System.out.println("Enter Username");
 					Username = sc.next();
 					System.out.println("Enter Current Password");
 					Password = sc.next();
 					// call isValid to validate manager Username
-					isValid = EmployeeUtility.validateManagerCredentials(db.fetchManager(),Username,Password);
+					isValid = EmployeeUtility.validateManagerCredentials(db.fetchManagers(),Username,Password);
 					if(!isValid) {
 						System.out.println("Invalid Credentials, Try Again!");
 					break;
@@ -82,22 +81,19 @@ public class ManagerLogin {
 					System.out.println("Confirm new Password");
 					String newPasswordConfirm = sc.next();
 					if(newPassword.equals(newPasswordConfirm)) {
-						manager.setPassword(newPassword);
-						System.out.println(manager.getPassword());
-						db.updateManagerPassword(manager);
-						System.out.println(manager.getPassword());
+						man.setPassword(newPassword);
+						db.updateManagerPassword(man);
 					}
 					else {
 						System.out.println("Passwords do not match.");
 					}
-					db.updateManager(manager);
 					break;
 				case 3: 
 					System.out.println("Enter Name");
 					String Name = sc.next();
 					System.out.println("Enter Username");
 					Username = sc.next();
-					isValid = EmployeeUtility.validateManagerUsername(db.fetchManager(),Username);
+					isValid = EmployeeUtility.validateManagerUsername(db.fetchManagers(),Username);
 					if(!isValid) { // if not valid, Username does not exist
 						System.out.println("Enter Password");
 						Password = sc.next();		

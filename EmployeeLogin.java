@@ -63,8 +63,8 @@ public class EmployeeLogin {
 					System.out.println("Confirm new Password");
 					String newPasswordConfirm = sc.next();
 					if(newPassword.equals(newPasswordConfirm)) {
-						employee.setPassword(newPassword);
-						db.updateEmployeePassword(employee);
+						emp.setPassword(newPassword);
+						db.updateEmployeePassword(emp);
 					}
 					else {
 						System.out.println("Passwords do not match.");

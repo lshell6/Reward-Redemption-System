@@ -83,15 +83,15 @@ Connection con;
 		dbClose();
 	}
 	
-	public void updateManager(Manager manager) throws SQLException{
+	public void updateManagerPassword2(String Name, String Username, String Password, int Manager_ID) throws SQLException{
 		dbConnect();
 		String sql = "update manager SET Name=?,Username=?,Password=? where Manager_ID=?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, manager.getName());
-			pstmt.setString(2, manager.getUsername());
-			pstmt.setString(3, manager.getPassword());
-			pstmt.setInt(4, manager.getId());
+			pstmt.setString(1, Name);
+			pstmt.setString(2, Username);
+			pstmt.setString(3, Password);
+			pstmt.setInt(4, Manager_ID);
 			pstmt.executeUpdate();
 			System.out.println("hi");
 		}catch(SQLException e) {
@@ -183,7 +183,7 @@ Connection con;
 		return list;
 	}
 	
-	public List<Manager> fetchManager() throws SQLException{
+	public List<Manager> fetchManagers() throws SQLException{
 		dbConnect();
 		String sql = "select * from manager";
 		List<Manager> list = new ArrayList<>();
@@ -249,55 +249,10 @@ Connection con;
 		return m;
 	}
 
-	public Employee selectEmployee() throws SQLException{
-		List<Employee> list = new ArrayList<>();
-		dbConnect();
-		String sql = "select * from employee where Employee_ID = ?";
-		Employee e = new Employee();
-		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			ResultSet rst = pstmt.executeQuery();
-
-			while(rst.next()) {
-				list.add(new Employee(rst.getInt("Employee_ID"),
-						rst.getString("Name"),
-						rst.getString("Username"),
-						rst.getString("Password"),
-						rst.getInt("Curr_Points"),
-						rst.getInt("Total_Points")));
-			}
-		} catch(SQLException e1) {
-			e1.printStackTrace();
-		}
-		dbClose();
-		return e;
-	}
-	
-	public Manager selectManager() throws SQLException{
-		List<Manager> list = new ArrayList<>();
-		dbConnect();
-		String sql = "select * from manager where Manager_ID = ?";
-		Manager m = new Manager();
-		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			ResultSet rst = pstmt.executeQuery();
-
-			while(rst.next()) {
-				list.add(new Manager(rst.getInt("Manager_ID"),
-						rst.getString("Name"),
-						rst.getString("Username"),
-						rst.getString("Password")));
-			}
-		} catch(SQLException e1) {
-			e1.printStackTrace();
-		}
-		dbClose();
-		return m;
-	}
 
 	public List<Item> fetchItems() throws SQLException{
 		dbConnect();
-		String sql = "select * from items";
+		String sql = "select * from items order by PtValue asc";
 		List<Item> list = new ArrayList<>();
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -315,21 +270,44 @@ Connection con;
 		return list;
 	}
 
-	public List<Item> selectItems() throws SQLException{
+	public Item selectItem(int id) throws SQLException{
 		dbConnect();
-		String sql = "select * from item where Item_ID = ?";
-		List<Item> list = new ArrayList<>();
+		String sql = "select * from items where Item_ID = ?";
+		Item item = new Item();
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
 			ResultSet rst = pstmt.executeQuery();
-
+			rst.next();
+			item = new Item(rst.getInt("Item_ID"), 
+					rst.getString("Name"), 
+					rst.getInt("ptValue"));
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		dbClose();
+		return item;
+	}
+	
+	public List<Item> itemCart(int numOfItems) throws SQLException{
+		dbConnect();
+		String sql = "select * from item where Item_ID = ?";
+		for(int i = 1; i<numOfItems; i++) {
+			sql = sql + "and Item_ID = ?";
+		}
+		List<Item> list = new ArrayList<>();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			for(int i = 1; i <= numOfItems; i++) {
+				pstmt.setInt(i, list.get(i-1).getId());
+			}
+			ResultSet rst = pstmt.executeQuery();
 			while(rst.next()) {
 				list.add(new Item(rst.getInt("Item_ID"),
 						rst.getString("Name"),
 						rst.getInt("PtValue")));
-				sql = sql + "+ ?";
 			}
-		}catch(SQLException e){
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		dbClose();

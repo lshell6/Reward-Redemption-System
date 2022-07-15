@@ -9,6 +9,11 @@ public class Item {
 		super();
 	}
 	
+	Item(int id){
+		super();
+		this.id=id;
+	}
+	
 	Item(int id, String Name, int ptValue){
 		super();
 		this.id = id;
