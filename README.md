@@ -39,7 +39,7 @@ Tasks Given:
 - Manager Class
 - Items Class
 - Transaction Class
-- Updated DB class
+- Created and updated DB class
 - EERD and schema
 - Testing/Troubleshooting
 
@@ -48,7 +48,7 @@ Tasks Completed:
 - Manager Class
 - Items Class
 - Transaction Class
-- Updated DB class
+- Created and updated DB class
 - EERD and schema
 - Testing/Troubleshooting
 
