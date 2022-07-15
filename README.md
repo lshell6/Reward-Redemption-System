@@ -62,6 +62,7 @@ Tasks Completed:
 -Cleaner UI
 
 -Main issue to tackle: organization with merging using git
+
   Possible solution: Using Interface class
 
 
